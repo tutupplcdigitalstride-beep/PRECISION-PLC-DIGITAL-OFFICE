@@ -7,18 +7,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#0B1F3A;--sky:#1B6CA8;--sky-light:#2E86D4;
-  --blue-soft:#E3EFF9;--blue-mid:#C2D9EF;--white:#FFFFFF;
-  --slate:#4A5E78;--slate-light:#7A8FA8;--border:#D4E4F0;
-  --green:#1A7A4A;--green-bg:#E6F4EE;--amber:#A06000;
-  --amber-bg:#FFF3DC;--red:#B02020;--red-bg:#FDEAEA;
-  --offwhite:#F0F6FC;--light-grey:#EEF1F6;
-}
+:root{--navy:#0B1F3A;--sky:#1B6CA8;--sky-light:#2E86D4;--blue-soft:#E3EFF9;--blue-mid:#C2D9EF;--white:#FFFFFF;--slate:#4A5E78;--slate-light:#7A8FA8;--border:#D4E4F0;--green:#1A7A4A;--green-bg:#E6F4EE;--amber:#A06000;--amber-bg:#FFF3DC;--red:#B02020;--red-bg:#FDEAEA;--offwhite:#F0F6FC;--light-grey:#EEF1F6}
 body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy);font-size:14px}
 .app{display:flex;height:100vh;overflow:hidden}
-
-/* LOGIN */
 .login-wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--offwhite)}
 .login-box{background:#fff;border-radius:16px;border:1px solid var(--border);padding:40px;width:380px;box-shadow:0 4px 24px rgba(11,31,58,.08)}
 .login-logo{text-align:center;margin-bottom:28px}
@@ -32,16 +23,13 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 .form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--sky)}
 .form-textarea{resize:vertical;min-height:80px}
 .btn{padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer;border:none;font-family:'Inter',sans-serif;transition:all .15s}
-.btn-primary{background:var(--sky);color:#fff}
-.btn-primary:hover{background:var(--navy)}
+.btn-primary{background:var(--sky);color:#fff}.btn-primary:hover{background:var(--navy)}
 .btn-secondary{background:var(--blue-soft);color:var(--navy)}
-.btn-danger{background:var(--red-bg);color:var(--red)}
+.btn-danger{background:var(--red-bg);color:var(--red);border:1px solid #f5c0c0}
 .btn-ghost{background:transparent;color:var(--slate);border:1px solid var(--border)}
 .btn-full{width:100%;padding:12px}
 .btn-sm{padding:5px 12px;font-size:12px}
 .login-err{background:var(--red-bg);color:var(--red);padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;display:none}
-
-/* SIDEBAR */
 .sidebar{width:240px;background:var(--navy);display:flex;flex-direction:column;flex-shrink:0;overflow-y:auto}
 .sb-brand{padding:18px 16px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
 .sb-brand-name{font-size:14px;font-weight:700;color:#fff}
@@ -61,43 +49,30 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 .sb-logout{margin-top:auto;padding:12px 16px;border-top:1px solid rgba(255,255,255,.08)}
 .sb-logout button{background:rgba(255,255,255,.07);border:none;color:rgba(255,255,255,.5);font-size:12px;padding:8px 14px;border-radius:7px;cursor:pointer;width:100%;font-family:'Inter',sans-serif}
 .sb-logout button:hover{background:rgba(255,255,255,.12);color:#fff}
-
-/* MAIN */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 22px;height:54px;display:flex;align-items:center;gap:14px;flex-shrink:0}
 .topbar-title{font-size:15px;font-weight:700;color:var(--navy);flex:1}
 .topbar-date{font-size:12px;color:var(--slate);background:var(--blue-soft);padding:4px 12px;border-radius:20px}
 .role-badge{background:var(--navy);color:#fff;font-size:11px;font-weight:600;padding:4px 10px;border-radius:20px}
+.auto-logout-warn{background:var(--amber-bg);color:var(--amber);font-size:12px;font-weight:600;padding:4px 12px;border-radius:20px;display:none}
 .content{flex:1;overflow-y:auto;padding:20px}
-.section{display:none}
-.section.active{display:block}
-
-/* STATS */
+.section{display:none}.section.active{display:block}
 .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
 .stat-card{background:#fff;border-radius:10px;border:1px solid var(--border);padding:16px}
 .stat-val{font-size:28px;font-weight:700;color:var(--navy)}
 .stat-label{font-size:11px;color:var(--slate);margin-top:3px}
 .stat-sub{font-size:11px;margin-top:5px;font-weight:500}
-.stat-sub.green{color:var(--green)}
-.stat-sub.amber{color:var(--amber)}
-.stat-sub.red{color:var(--red)}
-
-/* PANEL */
+.stat-sub.green{color:var(--green)}.stat-sub.amber{color:var(--amber)}.stat-sub.red{color:var(--red)}
 .panel{background:#fff;border-radius:10px;border:1px solid var(--border);margin-bottom:18px}
 .panel-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .panel-title{font-size:13.5px;font-weight:700;color:var(--navy)}
 .panel-sub{font-size:11.5px;color:var(--slate);margin-top:1px}
 .panel-body{padding:0}
-
-/* TABLE */
 .data-table{width:100%;border-collapse:collapse}
 .data-table th{padding:9px 14px;text-align:left;font-size:11px;font-weight:600;color:var(--slate);background:var(--blue-soft);border-bottom:1px solid var(--border);letter-spacing:.3px}
 .data-table td{padding:10px 14px;font-size:12.5px;border-bottom:1px solid #EEF4FA;vertical-align:middle}
 .data-table tr:last-child td{border-bottom:none}
 .data-table tr:hover td{background:#F8FBFF}
-.data-table tbody tr{cursor:default}
-
-/* BADGE */
 .badge{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:2px 9px;border-radius:20px}
 .badge.green{background:var(--green-bg);color:var(--green)}
 .badge.amber{background:var(--amber-bg);color:var(--amber)}
@@ -105,16 +80,10 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 .badge.blue{background:var(--blue-soft);color:var(--sky)}
 .badge.navy{background:var(--navy);color:#fff}
 .badge.grey{background:var(--light-grey);color:var(--slate)}
-
-/* FORM */
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:18px}
 .form-full{grid-column:1/-1}
 .form-actions{padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
-
-/* TWO COL */
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-
-/* EVENT */
 .event-item{padding:12px 18px;border-bottom:1px solid #EEF4FA;display:flex;gap:14px;align-items:center}
 .event-item:last-child{border-bottom:none}
 .event-date-box{background:var(--navy);color:#fff;border-radius:8px;width:42px;height:42px;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
@@ -123,62 +92,53 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 .event-info{flex:1}
 .event-title{font-size:13px;font-weight:600;color:var(--navy)}
 .event-detail{font-size:11.5px;color:var(--slate);margin-top:2px}
-
-/* NOTICE */
 .notice-item{padding:14px 18px;border-bottom:1px solid #EEF4FA;display:flex;gap:12px}
 .notice-item:last-child{border-bottom:none}
 .notice-dot{width:7px;height:7px;border-radius:50%;background:var(--sky);margin-top:5px;flex-shrink:0}
 .notice-text{font-size:13px;color:var(--navy);line-height:1.55}
 .notice-meta{font-size:11px;color:var(--slate-light);margin-top:3px}
-
-/* PERF BAR */
 .perf-bar-wrap{display:flex;align-items:center;gap:10px;margin-bottom:9px}
 .perf-name{font-size:12px;font-weight:600;color:var(--navy);width:85px;flex-shrink:0}
 .perf-bar-bg{flex:1;background:var(--blue-soft);border-radius:20px;height:9px;overflow:hidden}
 .perf-bar{height:100%;border-radius:20px;background:var(--sky)}
 .perf-val{font-size:12px;font-weight:700;color:var(--navy);width:34px;text-align:right;flex-shrink:0}
-
-/* CLOCK */
 .clock-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:18px}
 .clock-card{border:1px solid var(--border);border-radius:8px;padding:12px;text-align:center}
 .clock-name{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:5px}
 .clock-time{font-size:12px;color:var(--slate)}
 .clock-status{margin-top:7px}
-
-/* FEEDBACK */
 .feedback-item{padding:14px 18px;border-bottom:1px solid #EEF4FA}
 .feedback-item:last-child{border-bottom:none}
 .feedback-score{display:flex;gap:2px;margin-bottom:5px}
-.star{color:#C4972A;font-size:13px}
-.star.empty{color:var(--border)}
-
-/* EMPTY */
+.star{color:#C4972A;font-size:13px}.star.empty{color:var(--border)}
 .empty-state{text-align:center;padding:40px 20px;color:var(--slate)}
 .empty-icon{font-size:32px;margin-bottom:8px}
 .empty-text{font-size:13.5px;font-weight:500}
 .empty-sub{font-size:12px;margin-top:3px;color:var(--slate-light)}
-
-/* RESTRICTED */
 .restricted-banner{background:var(--navy);color:rgba(255,255,255,.7);font-size:11px;font-weight:600;padding:6px 14px;border-radius:6px;display:flex;align-items:center;gap:6px}
-
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:1000;display:none;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
 .modal{background:#fff;border-radius:12px;width:540px;max-width:95vw;max-height:85vh;overflow-y:auto;box-shadow:0 8px 40px rgba(0,0,0,.2)}
 .modal-header{padding:18px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
 .modal-title{font-size:15px;font-weight:700;color:var(--navy)}
 .modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--slate);line-height:1}
-.modal-body{padding:0}
 .modal-footer{padding:14px 18px;border-top:1px solid var(--border);display:flex;gap:10px;justify-content:flex-end}
-
 .toast{position:fixed;bottom:24px;right:24px;background:var(--navy);color:#fff;padding:12px 20px;border-radius:10px;font-size:13px;font-weight:500;z-index:2000;transform:translateY(80px);opacity:0;transition:all .3s}
 .toast.show{transform:translateY(0);opacity:1}
-.toast.success{background:var(--green)}
-.toast.error{background:var(--red)}
+.toast.success{background:var(--green)}.toast.error{background:var(--red)}
+.inline-select{border:1px solid var(--border);border-radius:6px;font-size:12px;padding:3px 8px;font-family:'Inter',sans-serif;color:var(--navy);background:#fff;cursor:pointer}
+.alert-row{background:#FFF8F8 !important}
+.warn-row{background:#FFFBF0 !important}
+.appraisal-staff-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px;margin-bottom:14px}
+.appraisal-staff-name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.metric-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:14px}
+.metric-box{background:var(--blue-soft);border-radius:8px;padding:10px;text-align:center}
+.metric-val{font-size:20px;font-weight:700;color:var(--navy)}
+.metric-label{font-size:10px;color:var(--slate);margin-top:2px}
+.time-badge{background:var(--blue-soft);color:var(--sky);font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
 </style>
 </head>
 <body>
-
 <div id="toast" class="toast"></div>
 
 <!-- LOGIN -->
@@ -189,16 +149,14 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="login-title">PPLC Digital Office</div>
       <div class="login-sub">Precision Price Lead Consult</div>
     </div>
-    <div id="login-err" class="login-err">Incorrect name or password. Please try again.</div>
+    <div id="login-err" class="login-err"></div>
     <div class="form-group">
       <label class="form-label">Your Name</label>
-      <select class="form-select" id="login-name">
-        <option value="">Select your name...</option>
-      </select>
+      <select class="form-select" id="login-name"><option value="">Select your name...</option></select>
     </div>
     <div class="form-group">
       <label class="form-label">Password</label>
-      <input type="password" class="form-input" id="login-password" placeholder="Enter your password">
+      <input type="password" class="form-input" id="login-password" placeholder="Enter your password" onkeydown="if(event.key==='Enter')doLogin()">
     </div>
     <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In</button>
     <div style="text-align:center;margin-top:16px;font-size:11px;color:var(--slate-light)">PPLC Digital Office · Confidential</div>
@@ -213,13 +171,9 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="sb-brand-sub">Precision Price Lead Consult</div>
     </div>
     <div class="sb-user">
-      <div class="sb-avatar" id="sb-avatar">AO</div>
-      <div>
-        <div class="sb-user-name" id="sb-name">Adetutu Oladosu</div>
-        <div class="sb-user-role" id="sb-role">Operations Coordinator</div>
-      </div>
+      <div class="sb-avatar" id="sb-avatar">P</div>
+      <div><div class="sb-user-name" id="sb-name">Staff</div><div class="sb-user-role" id="sb-role">Staff Member</div></div>
     </div>
-
     <div class="sb-section">
       <div class="sb-label">Overview</div>
       <div class="nav-item active" onclick="showSection('dashboard')"><span class="nav-icon">📊</span>Dashboard</div>
@@ -236,7 +190,6 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="sb-label">Clients</div>
       <div class="nav-item" onclick="showSection('clients')"><span class="nav-icon">🏢</span>Client Register</div>
       <div class="nav-item" onclick="showSection('documents')"><span class="nav-icon">📁</span>Document Checklist</div>
-      <div class="nav-item id="nav-feedback" onclick="showSection('feedback')" style="display:none"><span class="nav-icon">💬</span>Client Feedback</div>
     </div>
     <div class="sb-section">
       <div class="sb-label">Schedule</div>
@@ -244,18 +197,21 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="nav-item" onclick="showSection('meetings')"><span class="nav-icon">🤝</span>Meeting Log</div>
     </div>
     <div class="sb-section" id="mgmt-section" style="display:none">
-      <div class="sb-label">Management</div>
+      <div class="sb-label">🔒 Management</div>
       <div class="nav-item" onclick="showSection('weekly')"><span class="nav-icon">📋</span>Weekly Review</div>
       <div class="nav-item" onclick="showSection('appraisal')"><span class="nav-icon">📈</span>Performance</div>
+      <div class="nav-item" onclick="showSection('loginactivity')"><span class="nav-icon">🕐</span>Login Activity</div>
       <div class="nav-item" onclick="showSection('stride')"><span class="nav-icon">🔷</span>STRIDE Activity</div>
+      <div class="nav-item" onclick="showSection('feedback')"><span class="nav-icon">💬</span>Client Feedback</div>
       <div class="nav-item" onclick="showSection('admin')"><span class="nav-icon">⚙️</span>Admin</div>
     </div>
-    <div class="sb-logout"><button onclick="doLogout()">Sign out</button></div>
+    <div class="sb-logout"><button onclick="confirmLogout()">Sign out</button></div>
   </div>
 
   <div class="main">
     <div class="topbar">
       <div class="topbar-title" id="page-title">Dashboard</div>
+      <div class="auto-logout-warn" id="auto-warn">⚠ Logging out soon due to inactivity</div>
       <div class="topbar-date" id="topbar-date"></div>
       <div class="role-badge" id="role-badge">Staff</div>
     </div>
@@ -264,24 +220,24 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <!-- DASHBOARD -->
       <div class="section active" id="sec-dashboard">
         <div class="stat-grid">
-          <div class="stat-card"><div class="stat-val" id="stat-staff">0</div><div class="stat-label">Active Staff</div><div class="stat-sub green" id="stat-clocked">0 clocked in today</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-staff">0</div><div class="stat-label">Active Staff</div><div class="stat-sub green" id="stat-clocked">Loading...</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-tasks">0</div><div class="stat-label">Active Tasks</div><div class="stat-sub red" id="stat-overdue">0 overdue</div></div>
-          <div class="stat-card"><div class="stat-val" id="stat-events">0</div><div class="stat-label">Events This Week</div><div class="stat-sub amber" id="stat-soon">0 upcoming</div></div>
+          <div class="stat-card"><div class="stat-val" id="stat-events">0</div><div class="stat-label">Events This Week</div><div class="stat-sub amber" id="stat-soon">Loading...</div></div>
           <div class="stat-card"><div class="stat-val" id="stat-clients">0</div><div class="stat-label">Active Clients</div><div class="stat-sub green">All tracked</div></div>
         </div>
         <div class="two-col">
           <div class="panel">
             <div class="panel-header"><div><div class="panel-title">Staff Activity Today</div><div class="panel-sub">Clock-in and log status</div></div></div>
-            <div class="panel-body"><div id="dash-staff-table"><div class="empty-state"><div class="empty-icon">👥</div><div class="empty-text">Loading...</div></div></div></div>
+            <div id="dash-staff-table"><div class="empty-state"><div class="empty-text">Loading...</div></div></div>
           </div>
           <div class="panel">
-            <div class="panel-header"><div class="panel-title">Upcoming Events</div></div>
-            <div class="panel-body"><div id="dash-events"><div class="empty-state"><div class="empty-icon">📅</div><div class="empty-text">No upcoming events</div></div></div></div>
+            <div class="panel-header"><div class="panel-title">Upcoming Events & Deadlines</div></div>
+            <div id="dash-events"><div class="empty-state"><div class="empty-icon">📅</div><div class="empty-text">No upcoming events</div></div></div>
           </div>
         </div>
         <div class="panel">
-          <div class="panel-header"><div class="panel-title">Recent Overdue Tasks</div><span class="badge red" id="dash-overdue-count">0</span></div>
-          <div class="panel-body"><div id="dash-overdue"><div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">No overdue tasks</div></div></div></div>
+          <div class="panel-header"><div class="panel-title">Overdue Tasks</div><span class="badge red" id="dash-overdue-count">0</span></div>
+          <div id="dash-overdue"><div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">No overdue tasks</div></div></div>
         </div>
       </div>
 
@@ -290,7 +246,10 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
         <div class="panel">
           <div class="panel-header">
             <div><div class="panel-title">Clock In / Out</div><div class="panel-sub" id="clock-date-label">Today</div></div>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modal-clockin')">Clock In Now</button>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary btn-sm" onclick="openModal('modal-clockin')">Clock In</button>
+              <button class="btn btn-danger btn-sm" onclick="openModal('modal-clockout')">Clock Out</button>
+            </div>
           </div>
           <div class="clock-grid" id="clock-grid"><div class="empty-state"><div class="empty-text">Loading...</div></div></div>
         </div>
@@ -303,7 +262,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
             <div><div class="panel-title">Daily Work Log</div><div class="panel-sub">Submit before 4:30 PM each working day</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-dailylog')">+ Add Log Entry</button>
           </div>
-          <div class="panel-body"><div id="daily-log-table"><div class="empty-state"><div class="empty-icon">📝</div><div class="empty-text">No entries yet today</div><div class="empty-sub">Click Add Log Entry to submit your daily work</div></div></div></div>
+          <div id="daily-log-table"><div class="empty-state"><div class="empty-icon">📝</div><div class="empty-text">No entries yet today</div><div class="empty-sub">Click Add Log Entry to submit your work</div></div></div>
         </div>
       </div>
 
@@ -311,21 +270,21 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-tasks">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Task Board</div><div class="panel-sub">All active tasks across the team</div></div>
-            <button class="btn btn-primary btn-sm" onclick="openModal('modal-task')">+ Add Task</button>
+            <div><div class="panel-title">Task Board</div><div class="panel-sub">Click the status dropdown to update any task directly</div></div>
+            <button class="btn btn-primary btn-sm" id="add-task-btn" style="display:none" onclick="openModal('modal-task')">+ Add Task</button>
           </div>
-          <div class="panel-body"><div id="task-table"><div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">No tasks yet</div></div></div></div>
+          <div id="task-table"><div class="empty-state"><div class="empty-icon">✅</div><div class="empty-text">No active tasks</div></div></div>
         </div>
       </div>
 
-      <!-- INCOMING WORK -->
+      <!-- INCOMING -->
       <div class="section" id="sec-incoming">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Incoming Work</div><div class="panel-sub">Log every new instruction or brief the moment it arrives</div></div>
+            <div><div class="panel-title">Incoming Work</div><div class="panel-sub">Log every new instruction the moment it arrives</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-incoming')">+ Log New Work</button>
           </div>
-          <div class="panel-body"><div id="incoming-table"><div class="empty-state"><div class="empty-icon">📥</div><div class="empty-text">No incoming work logged yet</div></div></div></div>
+          <div id="incoming-table"><div class="empty-state"><div class="empty-icon">📥</div><div class="empty-text">No incoming work logged yet</div></div></div>
         </div>
       </div>
 
@@ -333,10 +292,10 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-clients">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Client Register</div><div class="panel-sub">All active clients</div></div>
+            <div><div class="panel-title">Client Register</div></div>
             <div id="client-add-btn" style="display:none"><button class="btn btn-primary btn-sm" onclick="openModal('modal-client')">+ Add Client</button></div>
           </div>
-          <div class="panel-body"><div id="client-table"><div class="empty-state"><div class="empty-text">Loading...</div></div></div></div>
+          <div id="client-table"><div class="empty-state"><div class="empty-text">Loading...</div></div></div>
         </div>
       </div>
 
@@ -344,10 +303,10 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-documents">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Document Checklist</div><div class="panel-sub">Track expected and outstanding documents per client</div></div>
+            <div><div class="panel-title">Document Checklist</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-document')">+ Add Document</button>
           </div>
-          <div class="panel-body"><div id="document-table"><div class="empty-state"><div class="empty-icon">📁</div><div class="empty-text">No documents tracked yet</div></div></div></div>
+          <div id="document-table"><div class="empty-state"><div class="empty-icon">📁</div><div class="empty-text">No documents tracked yet</div></div></div>
         </div>
       </div>
 
@@ -355,7 +314,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-events">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Events & Deadlines</div><div class="panel-sub">Log every appointment and deadline — reminders sent automatically</div></div>
+            <div><div class="panel-title">Events & Deadlines</div><div class="panel-sub">Reminders are automatically triggered based on the schedule you set</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-event')">+ Add Event</button>
           </div>
           <div id="events-list"><div class="empty-state" style="padding:40px"><div class="empty-icon">📅</div><div class="empty-text">No events logged yet</div></div></div>
@@ -366,10 +325,10 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-notices">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Notices & Announcements</div><div class="panel-sub">Posted by management — visible to all staff</div></div>
+            <div><div class="panel-title">Notices & Announcements</div></div>
             <div id="notice-add-btn" style="display:none"><button class="btn btn-primary btn-sm" onclick="openModal('modal-notice')">+ Post Notice</button></div>
           </div>
-          <div id="notices-list"><div class="empty-state" style="padding:40px"><div class="empty-icon">📢</div><div class="empty-text">No notices posted yet</div></div></div>
+          <div id="notices-list"><div class="empty-state" style="padding:40px"><div class="empty-icon">📢</div><div class="empty-text">No notices yet</div></div></div>
         </div>
       </div>
 
@@ -377,32 +336,64 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-meetings">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">Meeting Log</div><div class="panel-sub">Every meeting held, outcomes, and action points</div></div>
+            <div><div class="panel-title">Meeting Log</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-meeting')">+ Log Meeting</button>
           </div>
-          <div class="panel-body"><div id="meeting-table"><div class="empty-state"><div class="empty-icon">🤝</div><div class="empty-text">No meetings logged yet</div></div></div></div>
+          <div id="meeting-table"><div class="empty-state"><div class="empty-icon">🤝</div><div class="empty-text">No meetings logged yet</div></div></div>
         </div>
       </div>
 
-      <!-- WEEKLY REVIEW (management) -->
+      <!-- WEEKLY REVIEW -->
       <div class="section" id="sec-weekly">
         <div class="panel">
           <div class="panel-header">
             <div><div class="panel-title">Weekly Review</div><div class="panel-sub">Auto-generated from daily logs — ready for Monday meeting</div></div>
             <div class="restricted-banner">🔒 Management Only</div>
           </div>
-          <div class="panel-body"><div id="weekly-table"><div class="empty-state"><div class="empty-text">Loading weekly summary...</div></div></div></div>
+          <div id="weekly-table"><div class="empty-state"><div class="empty-text">Loading...</div></div></div>
         </div>
       </div>
 
-      <!-- APPRAISAL (management) -->
+      <!-- PERFORMANCE & APPRAISAL -->
       <div class="section" id="sec-appraisal">
-        <div class="panel" style="border-left:3px solid var(--navy)">
-          <div class="panel-header">
-            <div><div class="panel-title">Performance & Appraisal</div><div class="panel-sub">Generated from log data — not visible to staff</div></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+          <div>
+            <div style="font-size:16px;font-weight:700;color:var(--navy)">Performance & Appraisal</div>
+            <div style="font-size:12px;color:var(--slate);margin-top:2px">Auto-generated from system data · Not visible to staff</div>
+          </div>
+          <div style="display:flex;gap:10px;align-items:center">
+            <select class="form-select" id="appraisal-quarter" style="width:auto" onchange="loadAppraisal()">
+              <option value="Q1">Q1 (Jan–Mar)</option>
+              <option value="Q2">Q2 (Apr–Jun)</option>
+              <option value="Q3" selected>Q3 (Jul–Sep)</option>
+              <option value="Q4">Q4 (Oct–Dec)</option>
+            </select>
+            <select class="form-select" id="appraisal-year" style="width:auto" onchange="loadAppraisal()">
+              <option value="2026" selected>2026</option>
+              <option value="2025">2025</option>
+            </select>
             <div class="restricted-banner">🔒 Management Only</div>
           </div>
-          <div style="padding:18px" id="appraisal-content"><div class="empty-state"><div class="empty-text">Loading performance data...</div></div></div>
+        </div>
+        <div id="appraisal-content"><div class="empty-state"><div class="empty-text">Loading performance data...</div></div></div>
+      </div>
+
+      <!-- LOGIN ACTIVITY -->
+      <div class="section" id="sec-loginactivity">
+        <div class="panel" style="border-left:3px solid var(--navy)">
+          <div class="panel-header">
+            <div><div class="panel-title">Login Activity & Time on System</div><div class="panel-sub">Track when each staff member logged in, logged out, and how long they were active</div></div>
+            <div class="restricted-banner">🔒 Management Only</div>
+          </div>
+          <div style="padding:14px 18px;border-bottom:1px solid var(--border);display:flex;gap:10px;align-items:center">
+            <label class="form-label" style="margin:0;white-space:nowrap">Filter by date:</label>
+            <input type="date" class="form-input" id="activity-date" style="width:180px" onchange="loadLoginActivity()">
+          </div>
+          <div id="login-activity-table"><div class="empty-state" style="padding:30px"><div class="empty-text">Loading...</div></div></div>
+        </div>
+        <div class="panel" style="margin-top:0">
+          <div class="panel-header"><div class="panel-title">Time on System This Week — Per Staff Member</div></div>
+          <div id="time-tracking-table"><div class="empty-state"><div class="empty-text">Loading...</div></div></div>
         </div>
       </div>
 
@@ -410,24 +401,24 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-stride">
         <div class="panel">
           <div class="panel-header">
-            <div><div class="panel-title">STRIDE Activity Tracker</div><div class="panel-sub">Consultant engagements and diagnostic sessions</div></div>
+            <div><div class="panel-title">STRIDE Activity Tracker</div></div>
             <button class="btn btn-primary btn-sm" onclick="openModal('modal-stride')">+ Log Activity</button>
           </div>
-          <div class="panel-body"><div id="stride-table"><div class="empty-state"><div class="empty-icon">🔷</div><div class="empty-text">No STRIDE activity logged yet</div></div></div></div>
+          <div id="stride-table"><div class="empty-state"><div class="empty-icon">🔷</div><div class="empty-text">No STRIDE activity logged yet</div></div></div>
         </div>
       </div>
 
-      <!-- FEEDBACK (management) -->
+      <!-- FEEDBACK -->
       <div class="section" id="sec-feedback">
         <div class="panel" style="border-left:3px solid var(--navy)">
           <div class="panel-header">
-            <div><div class="panel-title">Client Feedback</div><div class="panel-sub">Confidential — visible to MD and Coordinator only</div></div>
+            <div><div class="panel-title">Client Feedback</div><div class="panel-sub">Confidential — visible to management only</div></div>
             <div style="display:flex;gap:8px;align-items:center">
               <div class="restricted-banner">🔒 Management Only</div>
               <button class="btn btn-primary btn-sm" onclick="openModal('modal-feedback')">+ Add Feedback</button>
             </div>
           </div>
-          <div id="feedback-list"><div class="empty-state" style="padding:40px"><div class="empty-icon">💬</div><div class="empty-text">No feedback received yet</div></div></div>
+          <div id="feedback-list"><div class="empty-state" style="padding:40px"><div class="empty-icon">💬</div><div class="empty-text">No feedback yet</div></div></div>
         </div>
       </div>
 
@@ -435,7 +426,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="section" id="sec-admin">
         <div class="panel" style="border-left:3px solid var(--navy)">
           <div class="panel-header">
-            <div><div class="panel-title">System Administration</div><div class="panel-sub">Manage staff, clients, task types and departments</div></div>
+            <div><div class="panel-title">System Administration</div></div>
             <div class="restricted-banner">🔒 Management Only</div>
           </div>
           <div style="padding:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
@@ -457,16 +448,28 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 
 <!-- MODALS -->
 <div class="modal-overlay" id="modal-clockin">
-  <div class="modal">
+  <div class="modal" style="width:380px">
     <div class="modal-header"><div class="modal-title">Clock In</div><button class="modal-close" onclick="closeModal('modal-clockin')">×</button></div>
     <div class="modal-body">
       <div class="form-grid">
         <div class="form-full"><label class="form-label">Staff Member</label><select class="form-select" id="ci-staff"></select></div>
-        <div><label class="form-label">Notes (optional)</label><input class="form-input" type="text" id="ci-notes" placeholder="e.g. Working from home"></div>
-        <div><label class="form-label">Date</label><input class="form-input" type="date" id="ci-date"></div>
+        <div class="form-full"><label class="form-label">Notes (optional)</label><input class="form-input" type="text" id="ci-notes" placeholder="e.g. Working from home"></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modal-clockin')">Cancel</button><button class="btn btn-primary" onclick="submitClockIn()">Clock In</button></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal-clockout">
+  <div class="modal" style="width:380px">
+    <div class="modal-header"><div class="modal-title">Clock Out</div><button class="modal-close" onclick="closeModal('modal-clockout')">×</button></div>
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="form-full"><label class="form-label">Staff Member</label><select class="form-select" id="co-staff"></select></div>
+        <div class="form-full"><label class="form-label">Notes (optional)</label><input class="form-input" type="text" id="co-notes" placeholder="e.g. End of day, power outage"></div>
+      </div>
+    </div>
+    <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modal-clockout')">Cancel</button><button class="btn btn-danger" onclick="submitClockOut()">Clock Out</button></div>
   </div>
 </div>
 
@@ -481,9 +484,9 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
         <div><label class="form-label">Task Type</label><select class="form-select" id="dl-tasktype"></select></div>
         <div class="form-full"><label class="form-label">What was done today</label><textarea class="form-textarea" id="dl-description" placeholder="Be specific about what you did..."></textarea></div>
         <div><label class="form-label">Status</label><select class="form-select" id="dl-status"><option>In Progress</option><option>Completed</option><option>Blocked</option><option>Pending Client</option></select></div>
-        <div><label class="form-label">Priority</label><select class="form-select" id="dl-priority"><option>URGENT</option><option>High</option><option>Medium</option><option>Low</option></select></div>
+        <div><label class="form-label">Priority</label><select class="form-select" id="dl-priority"><option>URGENT</option><option>High</option><option selected>Medium</option><option>Low</option></select></div>
         <div class="form-full"><label class="form-label">Next Step</label><input class="form-input" type="text" id="dl-nextstep" placeholder="What happens next?"></div>
-        <div class="form-full"><label class="form-label">Notes / Blockers</label><textarea class="form-textarea" id="dl-notes" placeholder="Any challenges or things management should know..."></textarea></div>
+        <div class="form-full"><label class="form-label">Notes / Blockers</label><textarea class="form-textarea" id="dl-notes" placeholder="Challenges or things management should know..."></textarea></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modal-dailylog')">Cancel</button><button class="btn btn-primary" onclick="submitDailyLog()">Save Log Entry</button></div>
@@ -515,7 +518,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
       <div class="form-grid">
         <div><label class="form-label">Client</label><select class="form-select" id="iw-client"></select></div>
         <div><label class="form-label">Assigned To</label><select class="form-select" id="iw-assigned"></select></div>
-        <div class="form-full"><label class="form-label">Brief / Instruction</label><textarea class="form-textarea" id="iw-brief" placeholder="Describe the work or instruction received..."></textarea></div>
+        <div class="form-full"><label class="form-label">Brief / Instruction</label><textarea class="form-textarea" id="iw-brief" placeholder="Describe the work received..."></textarea></div>
         <div><label class="form-label">Date Received</label><input class="form-input" type="date" id="iw-date"></div>
         <div><label class="form-label">Status</label><select class="form-select" id="iw-status"><option>Assigned</option><option>In Progress</option><option>Completed</option></select></div>
       </div>
@@ -529,7 +532,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
     <div class="modal-header"><div class="modal-title">Add Event or Deadline</div><button class="modal-close" onclick="closeModal('modal-event')">×</button></div>
     <div class="modal-body">
       <div class="form-grid">
-        <div class="form-full"><label class="form-label">Event Title</label><input class="form-input" type="text" id="ev-title" placeholder="e.g. Tax filing deadline — FIRS"></div>
+        <div class="form-full"><label class="form-label">Event Title</label><input class="form-input" type="text" id="ev-title" placeholder="e.g. FIRS Tax filing deadline"></div>
         <div><label class="form-label">Client</label><select class="form-select" id="ev-client"></select></div>
         <div><label class="form-label">Assigned To</label><select class="form-select" id="ev-assigned"></select></div>
         <div><label class="form-label">Event Date</label><input class="form-input" type="date" id="ev-date"></div>
@@ -547,7 +550,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
     <div class="modal-header"><div class="modal-title">Post Notice</div><button class="modal-close" onclick="closeModal('modal-notice')">×</button></div>
     <div class="modal-body">
       <div class="form-grid">
-        <div class="form-full"><label class="form-label">Title</label><input class="form-input" type="text" id="n-title" placeholder="e.g. Monday Review — 15 September at 7:00 AM"></div>
+        <div class="form-full"><label class="form-label">Title</label><input class="form-input" type="text" id="n-title" placeholder="e.g. Monday Review — 22 September at 7:00 AM"></div>
         <div class="form-full"><label class="form-label">Message</label><textarea class="form-textarea" id="n-body" style="min-height:100px" placeholder="Write your notice here..."></textarea></div>
       </div>
     </div>
@@ -563,7 +566,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
         <div><label class="form-label">Date</label><input class="form-input" type="date" id="mt-date"></div>
         <div><label class="form-label">Type</label><select class="form-select" id="mt-type"><option>Monday Review</option><option>Client Meeting</option><option>Internal Strategy</option><option>Performance Review</option><option>Other</option></select></div>
         <div class="form-full"><label class="form-label">Attendees</label><input class="form-input" type="text" id="mt-attendees" placeholder="e.g. All Staff, or Ridwan, Precious"></div>
-        <div class="form-full"><label class="form-label">Key Outcome</label><textarea class="form-textarea" id="mt-outcome" placeholder="What was the main result or decision?"></textarea></div>
+        <div class="form-full"><label class="form-label">Key Outcome</label><textarea class="form-textarea" id="mt-outcome" placeholder="Main result or decision?"></textarea></div>
         <div class="form-full"><label class="form-label">Action Points</label><textarea class="form-textarea" id="mt-actions" placeholder="What needs to be done, and by whom?"></textarea></div>
       </div>
     </div>
@@ -572,12 +575,12 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 </div>
 
 <div class="modal-overlay" id="modal-client">
-  <div class="modal">
+  <div class="modal" style="width:420px">
     <div class="modal-header"><div class="modal-title">Add Client</div><button class="modal-close" onclick="closeModal('modal-client')">×</button></div>
     <div class="modal-body">
       <div class="form-grid">
         <div class="form-full"><label class="form-label">Client Name</label><input class="form-input" type="text" id="cl-name" placeholder="Full client or organisation name"></div>
-        <div><label class="form-label">Industry</label><input class="form-input" type="text" id="cl-industry" placeholder="e.g. Construction, Finance..."></div>
+        <div><label class="form-label">Industry</label><input class="form-input" type="text" id="cl-industry" placeholder="e.g. Construction"></div>
         <div class="form-full"><label class="form-label">Notes</label><input class="form-input" type="text" id="cl-notes" placeholder="Any relevant notes"></div>
       </div>
     </div>
@@ -594,7 +597,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
         <div class="form-full"><label class="form-label">Document Name</label><input class="form-input" type="text" id="doc-name" placeholder="e.g. CAC Certificate, Bank Statements"></div>
         <div><label class="form-label">Expected By</label><input class="form-input" type="date" id="doc-expected"></div>
         <div><label class="form-label">Received?</label><select class="form-select" id="doc-received"><option value="false">No — Outstanding</option><option value="true">Yes — Received</option></select></div>
-        <div class="form-full"><label class="form-label">Notes</label><input class="form-input" type="text" id="doc-notes" placeholder="Any relevant notes"></div>
+        <div class="form-full"><label class="form-label">Notes</label><input class="form-input" type="text" id="doc-notes"></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modal-document')">Cancel</button><button class="btn btn-primary" onclick="submitDocument()">Save</button></div>
@@ -611,7 +614,7 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
         <div><label class="form-label">Assigned To</label><select class="form-select" id="st-assigned"></select></div>
         <div><label class="form-label">Date</label><input class="form-input" type="date" id="st-date"></div>
         <div><label class="form-label">Status</label><select class="form-select" id="st-status"><option>Scheduled</option><option>In Progress</option><option>Complete</option><option>Overdue</option></select></div>
-        <div class="form-full"><label class="form-label">Outcome</label><textarea class="form-textarea" id="st-outcome" placeholder="What was the result or outcome?"></textarea></div>
+        <div class="form-full"><label class="form-label">Outcome</label><textarea class="form-textarea" id="st-outcome" placeholder="Result or outcome..."></textarea></div>
       </div>
     </div>
     <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('modal-stride')">Cancel</button><button class="btn btn-primary" onclick="submitStride()">Save</button></div>
@@ -666,613 +669,568 @@ body{font-family:'Inter',sans-serif;background:var(--offwhite);color:var(--navy)
 </div>
 
 <script>
-const SUPABASE_URL = 'https://rpuzudltvagmaofycanx.supabase.co';
-const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwdXp1ZGx0dmFnbWFvZnljYW54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0OTUwNTMsImV4cCI6MjEwNTA3MTA1M30.yC4cJiUbiXbfAUcvcveamDjmOt1uuuSds04poXsUX70';
+const SUPABASE_URL='https://rpuzudltvagmaofycanx.supabase.co';
+const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwdXp1ZGx0dmFnbWFvZnljYW54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0OTUwNTMsImV4cCI6MjEwNTA3MTA1M30.yC4cJiUbiXbfAUcvcveamDjmOt1uuuSds04poXsUX70';
+const TASK_CREATORS=['Ridwan','Precious','Adetutu Oladosu','Mr Bola'];
+const INACTIVITY_MS=30*60*1000;
+let currentUser=null,cache={staff:[],clients:[],taskTypes:[],departments:[]};
+let sessionId=null,sessionStart=null,inactivityTimer=null,warnTimer=null;
 
-let currentUser = null;
-let cache = {staff:[],clients:[],taskTypes:[],departments:[]};
-
-async function db(table, options={}) {
-  let url = `${SUPABASE_URL}/rest/v1/${table}`;
-  const params = [];
-  if (options.select) params.push(`select=${options.select}`);
-  if (options.filter) params.push(options.filter);
-  if (options.order) params.push(`order=${options.order}`);
-  if (options.limit) params.push(`limit=${options.limit}`);
-  if (params.length) url += '?' + params.join('&');
-  const res = await fetch(url, {
-    method: options.method || 'GET',
-    headers: {
-      'apikey': SUPABASE_KEY,
-      'Authorization': `Bearer ${SUPABASE_KEY}`,
-      'Content-Type': 'application/json',
-      'Prefer': options.method && options.method !== 'GET' ? 'return=representation' : ''
-    },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
-  if (!res.ok) { const e = await res.text(); throw new Error(e); }
-  if (res.status === 204) return [];
-  return res.json();
+async function db(table,opts={}){
+  let url=`${SUPABASE_URL}/rest/v1/${table}`;
+  const p=[];
+  if(opts.select)p.push(`select=${opts.select}`);
+  if(opts.filter)p.push(opts.filter);
+  if(opts.order)p.push(`order=${opts.order}`);
+  if(opts.limit)p.push(`limit=${opts.limit}`);
+  if(p.length)url+='?'+p.join('&');
+  const r=await fetch(url,{method:opts.method||'GET',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json','Prefer':opts.method&&opts.method!=='GET'?'return=representation':''},body:opts.body?JSON.stringify(opts.body):undefined});
+  if(r.status===204)return[];
+  return r.json();
 }
+async function dbInsert(t,d){return db(t,{method:'POST',body:Array.isArray(d)?d:[d]});}
+async function dbPatch(t,filter,d){return db(t,{method:'PATCH',filter,body:d});}
 
-async function dbInsert(table, data) {
-  return db(table, {method:'POST', body: Array.isArray(data) ? data : [data]});
+function toast(msg,type='success'){const t=document.getElementById('toast');t.textContent=msg;t.className=`toast show ${type}`;setTimeout(()=>t.className='toast',3000);}
+function av(n){return(n||'').split(' ').slice(0,2).map(w=>w[0]||'').join('').toUpperCase();}
+function today(){return new Date().toISOString().split('T')[0];}
+function fmtDate(d){if(!d)return'—';return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+function fmtTime(ts){if(!ts)return'—';return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+function badge(text,type){return`<span class="badge ${type}">${text}</span>`;}
+function priorityBadge(p){if(!p)return badge('—','grey');if(p==='URGENT')return badge('URGENT','red');if(p==='High')return badge('High','amber');if(p==='Medium')return badge('Medium','blue');return badge('Low','grey');}
+function statusBadge(s){if(!s)return badge('—','grey');if(['Completed','Complete','Active'].includes(s))return badge(s,'green');if(['Overdue'].includes(s))return badge(s,'red');if(['Blocked'].includes(s))return badge(s,'red');if(['In Progress','Assigned','Scheduled'].includes(s))return badge(s,'blue');return badge(s,'grey');}
+function isManagement(){return currentUser&&['management','admin'].includes(currentUser.access_level);}
+function canCreateTasks(){return isManagement()||TASK_CREATORS.some(n=>currentUser?.full_name?.includes(n.split(' ')[0]));}
+function getQuarterDates(q,y){const ranges={Q1:[`${y}-01-01`,`${y}-03-31`],Q2:[`${y}-04-01`,`${y}-06-30`],Q3:[`${y}-07-01`,`${y}-09-30`],Q4:[`${y}-10-01`,`${y}-12-31`]};return ranges[q]||ranges.Q3;}
+
+// AUTO LOGOUT
+function resetInactivity(){
+  clearTimeout(inactivityTimer);clearTimeout(warnTimer);
+  document.getElementById('auto-warn').style.display='none';
+  if(!currentUser)return;
+  warnTimer=setTimeout(()=>{document.getElementById('auto-warn').style.display='block';},INACTIVITY_MS-60000);
+  inactivityTimer=setTimeout(async()=>{await recordLogout('auto');toast('Logged out due to inactivity','error');setTimeout(doLogout,2000);},INACTIVITY_MS);
 }
+['mousemove','keypress','click','scroll','touchstart'].forEach(e=>document.addEventListener(e,resetInactivity,{passive:true}));
 
-function toast(msg, type='success') {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.className = `toast show ${type}`;
-  setTimeout(() => t.className = 'toast', 3000);
+async function recordLogin(){
+  try{
+    const r=await dbInsert('login_activity',{staff_name:currentUser.full_name,session_date:today(),login_time:new Date().toISOString(),logout_type:'active'});
+    if(r&&r[0]){sessionId=r[0].id;sessionStart=new Date();}
+  }catch(e){}
 }
-
-function av(name) {
-  return name.split(' ').slice(0,2).map(w=>w[0]||'').join('').toUpperCase();
-}
-
-function today() { return new Date().toISOString().split('T')[0]; }
-
-function fmtDate(d) {
-  if (!d) return '—';
-  const dt = new Date(d);
-  return dt.toLocaleDateString('en-GB', {day:'numeric',month:'short',year:'numeric'});
-}
-
-function badge(text, type) {
-  return `<span class="badge ${type}">${text}</span>`;
-}
-
-function priorityBadge(p) {
-  if (!p) return badge('—','grey');
-  if (p==='URGENT') return badge('URGENT','red');
-  if (p==='High') return badge('High','amber');
-  if (p==='Medium') return badge('Medium','blue');
-  return badge('Low','grey');
-}
-
-function statusBadge(s) {
-  if (!s) return badge('—','grey');
-  if (s==='Completed'||s==='Complete') return badge(s,'green');
-  if (s==='Overdue') return badge(s,'red');
-  if (s==='Blocked') return badge(s,'red');
-  if (s==='In Progress'||s==='Assigned') return badge(s,'blue');
-  return badge(s,'grey');
-}
-
-function isManagement() {
-  return currentUser && (currentUser.access_level === 'management' || currentUser.access_level === 'admin');
+async function recordLogout(type='manual'){
+  if(!sessionId)return;
+  try{
+    const dur=sessionStart?Math.round((new Date()-sessionStart)/60000):0;
+    await fetch(`${SUPABASE_URL}/rest/v1/login_activity?id=eq.${sessionId}`,{method:'PATCH',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({logout_time:new Date().toISOString(),duration_minutes:dur,logout_type:type})});
+  }catch(e){}
+  sessionId=null;sessionStart=null;
 }
 
 // LOGIN
-async function initLogin() {
-  const staff = await db('staff', {filter:'is_active=eq.true', order:'full_name.asc'});
-  cache.staff = staff;
-  const sel = document.getElementById('login-name');
-  sel.innerHTML = '<option value="">Select your name...</option>';
-  staff.forEach(s => {
-    const o = document.createElement('option');
-    o.value = s.id;
-    o.textContent = s.full_name;
-    sel.appendChild(o);
-  });
+async function initLogin(){
+  try{const s=await db('staff',{filter:'is_active=eq.true',order:'full_name.asc'});cache.staff=s;const sel=document.getElementById('login-name');sel.innerHTML='<option value="">Select your name...</option>';s.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.full_name;sel.appendChild(o);});}catch(e){document.getElementById('login-err').style.display='block';document.getElementById('login-err').textContent='Could not connect to database. Check internet connection.';}
 }
 
-async function doLogin() {
-  const id = document.getElementById('login-name').value;
-  const pw = document.getElementById('login-password').value;
-  const err = document.getElementById('login-err');
-  if (!id || !pw) { err.style.display='block'; err.textContent='Please select your name and enter your password.'; return; }
-  const found = cache.staff.find(s => s.id === id);
-  if (!found || found.password_plain !== pw) { err.style.display='block'; err.textContent='Incorrect name or password. Please try again.'; return; }
-  currentUser = found;
-  err.style.display = 'none';
-  document.getElementById('login-screen').style.display = 'none';
-  document.getElementById('app-screen').style.display = 'flex';
-  document.getElementById('sb-name').textContent = currentUser.full_name;
-  document.getElementById('sb-role').textContent = currentUser.role || currentUser.department || '';
-  document.getElementById('sb-avatar').textContent = av(currentUser.full_name);
-  document.getElementById('role-badge').textContent = isManagement() ? 'Management' : 'Staff';
-  document.getElementById('topbar-date').textContent = new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
-  if (isManagement()) {
-    document.getElementById('mgmt-section').style.display = 'block';
-    document.getElementById('notice-add-btn').style.display = 'block';
-    document.getElementById('client-add-btn').style.display = 'block';
-    document.querySelector('[onclick="showSection(\'feedback\')"]').style.display = 'flex';
-  }
+async function doLogin(){
+  const id=document.getElementById('login-name').value;
+  const pw=document.getElementById('login-password').value;
+  const err=document.getElementById('login-err');
+  err.style.display='none';
+  if(!id||!pw){err.style.display='block';err.textContent='Please select your name and enter your password.';return;}
+  const found=cache.staff.find(s=>s.id===id);
+  if(!found||found.password_plain!==pw){err.style.display='block';err.textContent='Incorrect name or password. Please try again.';return;}
+  currentUser=found;
+  document.getElementById('login-screen').style.display='none';
+  document.getElementById('app-screen').style.display='flex';
+  document.getElementById('sb-name').textContent=currentUser.full_name;
+  document.getElementById('sb-role').textContent=currentUser.role||currentUser.department||'';
+  document.getElementById('sb-avatar').textContent=av(currentUser.full_name);
+  document.getElementById('role-badge').textContent=isManagement()?'Management':'Staff';
+  document.getElementById('topbar-date').textContent=new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+  if(isManagement()){document.getElementById('mgmt-section').style.display='block';document.getElementById('notice-add-btn').style.display='block';document.getElementById('client-add-btn').style.display='block';}
+  if(canCreateTasks())document.getElementById('add-task-btn').style.display='inline-flex';
   await loadCaches();
   await loadDashboard();
   populateAllDropdowns();
+  await recordLogin();
+  resetInactivity();
 }
 
-function doLogout() {
-  currentUser = null;
-  document.getElementById('app-screen').style.display = 'none';
-  document.getElementById('login-screen').style.display = 'flex';
-  document.getElementById('login-password').value = '';
-  document.getElementById('login-name').value = '';
+async function confirmLogout(){
+  await recordLogout('manual');
+  doLogout();
 }
 
-async function loadCaches() {
-  const [clients, taskTypes, departments] = await Promise.all([
-    db('clients', {filter:'is_active=eq.true', order:'name.asc'}),
-    db('task_types', {order:'name.asc'}),
-    db('departments', {order:'name.asc'})
-  ]);
-  cache.clients = clients;
-  cache.taskTypes = taskTypes;
-  cache.departments = departments;
+function doLogout(){
+  clearTimeout(inactivityTimer);clearTimeout(warnTimer);
+  currentUser=null;sessionId=null;sessionStart=null;
+  document.getElementById('app-screen').style.display='none';
+  document.getElementById('login-screen').style.display='flex';
+  document.getElementById('login-password').value='';
+  document.getElementById('login-name').value='';
+  document.getElementById('auto-warn').style.display='none';
 }
 
-function populateAllDropdowns() {
-  const staffOpts = cache.staff.filter(s=>s.access_level==='staff').map(s=>`<option value="${s.full_name}">${s.full_name}</option>`).join('');
-  const allStaffOpts = cache.staff.map(s=>`<option value="${s.full_name}">${s.full_name}</option>`).join('');
-  const clientOpts = '<option value="">Select client...</option>' + cache.clients.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
-  const taskOpts = '<option value="">Select task type...</option>' + cache.taskTypes.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
-  const deptOpts = '<option value="">Select department...</option>' + cache.departments.map(d=>`<option value="${d.name}">${d.name}</option>`).join('');
+async function loadCaches(){
+  const[clients,taskTypes,departments]=await Promise.all([db('clients',{filter:'is_active=eq.true',order:'name.asc'}),db('task_types',{order:'name.asc'}),db('departments',{order:'name.asc'})]);
+  cache.clients=clients;cache.taskTypes=taskTypes;cache.departments=departments;
+}
 
-  const set = (id, html) => { const el = document.getElementById(id); if(el) el.innerHTML = html; };
-
-  set('ci-staff', '<option value="">Select staff member...</option>' + staffOpts);
-  set('dl-staff', '<option value="">Select...</option>' + (isManagement() ? allStaffOpts : `<option value="${currentUser.full_name}" selected>${currentUser.full_name}</option>`));
-  set('dl-client', clientOpts);
-  set('dl-tasktype', taskOpts);
-  set('t-client', clientOpts);
-  set('t-tasktype', taskOpts);
-  set('t-assigned', '<option value="">Select...</option>' + allStaffOpts);
-  set('iw-client', clientOpts);
-  set('iw-assigned', '<option value="">Select...</option>' + allStaffOpts);
-  set('ev-client', clientOpts);
-  set('ev-assigned', '<option value="">Select...</option>' + allStaffOpts);
-  set('doc-client', clientOpts);
-  set('st-client', clientOpts);
-  set('st-assigned', '<option value="">Select...</option>' + allStaffOpts);
-  set('fb-client', clientOpts);
-  set('as-dept', deptOpts);
-  set('ci-date', undefined);
-  document.getElementById('ci-date').value = today();
-  document.getElementById('dl-date').value = today();
-  document.getElementById('iw-date').value = today();
-  document.getElementById('ev-date').value = today();
-  document.getElementById('fb-date').value = today();
-  document.getElementById('mt-date').value = today();
-  document.getElementById('st-date').value = today();
+function populateAllDropdowns(){
+  const staffOpts=cache.staff.filter(s=>s.access_level==='staff').map(s=>`<option value="${s.full_name}">${s.full_name}</option>`).join('');
+  const allStaffOpts=cache.staff.map(s=>`<option value="${s.full_name}">${s.full_name}</option>`).join('');
+  const clientOpts='<option value="">Select client...</option>'+cache.clients.map(c=>`<option value="${c.name}">${c.name}</option>`).join('');
+  const taskOpts='<option value="">Select task type...</option>'+cache.taskTypes.map(t=>`<option value="${t.name}">${t.name}</option>`).join('');
+  const deptOpts='<option value="">Select department...</option>'+cache.departments.map(d=>`<option value="${d.name}">${d.name}</option>`).join('');
+  const S=(id,h)=>{const e=document.getElementById(id);if(e)e.innerHTML=h;};
+  S('ci-staff','<option value="">Select staff member...</option>'+staffOpts);
+  S('co-staff','<option value="">Select staff member...</option>'+staffOpts);
+  S('dl-staff','<option value="">Select...</option>'+(isManagement()?allStaffOpts:`<option value="${currentUser.full_name}" selected>${currentUser.full_name}</option>`));
+  S('dl-client',clientOpts);S('dl-tasktype',taskOpts);
+  S('t-client',clientOpts);S('t-tasktype',taskOpts);S('t-assigned','<option value="">Select...</option>'+allStaffOpts);
+  S('iw-client',clientOpts);S('iw-assigned','<option value="">Select...</option>'+allStaffOpts);
+  S('ev-client',clientOpts);S('ev-assigned','<option value="">Select...</option>'+allStaffOpts);
+  S('doc-client',clientOpts);S('st-client',clientOpts);S('st-assigned','<option value="">Select...</option>'+allStaffOpts);
+  S('fb-client',clientOpts);S('as-dept',deptOpts);
+  ['dl-date','iw-date','ev-date','fb-date','mt-date','st-date'].forEach(id=>{const e=document.getElementById(id);if(e)e.value=today();});
 }
 
 // DASHBOARD
-async function loadDashboard() {
-  const todayStr = today();
-  const [clocks, logs, tasks, events, clients] = await Promise.all([
-    db('clock_records', {filter:`work_date=eq.${todayStr}`}),
-    db('daily_logs', {filter:`log_date=eq.${todayStr}`}),
-    db('tasks', {filter:'status=neq.Completed', order:'due_date.asc'}),
-    db('events', {order:'event_date.asc', limit:5}),
-    db('clients', {filter:'is_active=eq.true'})
-  ]);
+async function loadDashboard(){
+  const todayStr=today();
+  const[clocks,logs,tasks,events,clients]=await Promise.all([db('clock_records',{filter:`work_date=eq.${todayStr}`}),db('daily_logs',{filter:`log_date=eq.${todayStr}`}),db('tasks',{filter:'status=neq.Completed',order:'due_date.asc'}),db('events',{order:'event_date.asc',limit:10}),db('clients',{filter:'is_active=eq.true'})]);
+  const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
+  const clockedIn=clocks.map(c=>c.staff_name);
+  const loggedStaff=[...new Set(logs.map(l=>l.staff_name))];
+  document.getElementById('stat-staff').textContent=activeStaff.length;
+  document.getElementById('stat-clocked').textContent=`${[...new Set(clockedIn)].length} clocked in today`;
+  const overdue=tasks.filter(t=>t.due_date&&t.due_date<todayStr);
+  document.getElementById('stat-tasks').textContent=tasks.length;
+  document.getElementById('stat-overdue').textContent=`${overdue.length} overdue`;
+  document.getElementById('dash-overdue-count').textContent=overdue.length;
+  const weekEnd=new Date();weekEnd.setDate(weekEnd.getDate()+7);
+  const upcomingEvts=events.filter(e=>e.event_date>=todayStr&&e.event_date<=weekEnd.toISOString().split('T')[0]);
+  document.getElementById('stat-events').textContent=upcomingEvts.length;
+  document.getElementById('stat-soon').textContent=`${upcomingEvts.length} this week`;
+  document.getElementById('stat-clients').textContent=clients.length;
 
-  const activeStaff = cache.staff.filter(s=>s.access_level==='staff');
-  const clockedIn = clocks.map(c=>c.staff_name);
-  const loggedStaff = logs.map(l=>l.staff_name);
+  // Task badge
+  const myTasks=tasks.filter(t=>t.assigned_to_name===currentUser.full_name);
+  document.getElementById('badge-tasks').textContent=myTasks.length;
 
-  document.getElementById('stat-staff').textContent = activeStaff.length;
-  document.getElementById('stat-clocked').textContent = `${clockedIn.length} clocked in today`;
-  document.getElementById('stat-tasks').textContent = tasks.length;
-  const overdue = tasks.filter(t=>t.due_date && t.due_date < todayStr);
-  document.getElementById('stat-overdue').textContent = `${overdue.length} overdue`;
-  document.getElementById('dash-overdue-count').textContent = overdue.length;
-  const weekEnd = new Date(); weekEnd.setDate(weekEnd.getDate()+7);
-  const upcomingEvents = events.filter(e=>e.event_date >= todayStr && e.event_date <= weekEnd.toISOString().split('T')[0]);
-  document.getElementById('stat-events').textContent = upcomingEvents.length;
-  document.getElementById('stat-soon').textContent = `${upcomingEvents.length} this week`;
-  document.getElementById('stat-clients').textContent = clients.length;
-
-  // Staff table
-  const staffRows = activeStaff.map(s => {
-    const clocked = clockedIn.includes(s.full_name);
-    const logged = loggedStaff.includes(s.full_name);
-    let statusBadgeHtml = badge('Not In','red');
-    if (clocked && logged) statusBadgeHtml = badge('Active','green');
-    else if (clocked && !logged) statusBadgeHtml = badge('Pending Log','amber');
-    return `<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td>${clocked?clocks.find(c=>c.staff_name===s.full_name)?.clock_in?.slice(11,16)||'—':'—'}</td><td>${logged?badge('Submitted','green'):badge('Not Yet','amber')}</td><td>${statusBadgeHtml}</td></tr>`;
+  // Staff table (management sees all, staff sees own row)
+  let staffToShow=isManagement()?activeStaff:activeStaff.filter(s=>s.full_name===currentUser.full_name);
+  const staffRows=staffToShow.map(s=>{
+    const clocked=[...new Set(clockedIn)].includes(s.full_name);
+    const logged=loggedStaff.includes(s.full_name);
+    const clockRec=clocks.find(c=>c.staff_name===s.full_name);
+    let sb=badge('Not In','red');
+    if(clocked&&logged)sb=badge('Active','green');
+    else if(clocked&&!logged)sb=badge('Pending Log','amber');
+    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td>${clockRec?fmtTime(clockRec.clock_in):'—'}</td><td>${logged?badge('Submitted','green'):badge('Not Yet','amber')}</td><td>${sb}</td></tr>`;
   }).join('');
-  document.getElementById('dash-staff-table').innerHTML = staffRows ? `<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Clock In</th><th>Log</th><th>Status</th></tr></thead><tbody>${staffRows}</tbody></table>` : '<div class="empty-state"><div class="empty-text">No staff data today</div></div>';
+  document.getElementById('dash-staff-table').innerHTML=staffRows?`<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Clock In</th><th>Log</th><th>Status</th></tr></thead><tbody>${staffRows}</tbody></table>`:'<div class="empty-state"><div class="empty-text">No activity recorded today</div></div>';
 
   // Events
-  const eventHtml = upcomingEvents.slice(0,4).map(e=>{
-    const dt = new Date(e.event_date);
-    const day = dt.getDate();
-    const mon = dt.toLocaleDateString('en-GB',{month:'short'});
-    const daysAway = Math.ceil((dt-new Date())/86400000);
-    const pill = daysAway<=1?badge('Tomorrow','red'):daysAway<=3?badge(`${daysAway} Days`,'amber'):badge(`${daysAway} Days`,'blue');
-    return `<div class="event-item"><div class="event-date-box"><div class="event-day">${day}</div><div class="event-month">${mon}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}</div></div>${pill}</div>`;
+  const evHtml=upcomingEvts.slice(0,4).map(e=>{
+    const dt=new Date(e.event_date);const daysAway=Math.ceil((dt-new Date())/86400000);
+    const pill=daysAway<=0?badge('Today','red'):daysAway<=1?badge('Tomorrow','red'):daysAway<=3?badge(`${daysAway} Days`,'amber'):badge(`${daysAway} Days`,'blue');
+    return`<div class="event-item"><div class="event-date-box"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}</div></div>${pill}</div>`;
   }).join('');
-  document.getElementById('dash-events').innerHTML = eventHtml || '<div class="empty-state" style="padding:30px"><div class="empty-text">No upcoming events</div></div>';
+  document.getElementById('dash-events').innerHTML=evHtml||'<div class="empty-state" style="padding:30px"><div class="empty-text">No upcoming events</div></div>';
 
   // Overdue tasks
-  const overdueHtml = overdue.slice(0,5).map(t=>`<tr><td><strong>${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}</td><td>${badge('Overdue','red')}</td></tr>`).join('');
-  document.getElementById('dash-overdue').innerHTML = overdueHtml ? `<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due</th><th>Status</th></tr></thead><tbody>${overdueHtml}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No overdue tasks</div></div>';
+  const myOverdue=isManagement()?overdue:overdue.filter(t=>t.assigned_to_name===currentUser.full_name);
+  const ovHtml=myOverdue.slice(0,5).map(t=>`<tr class="alert-row"><td><strong>${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}</td><td>${badge('Overdue','red')}</td></tr>`).join('');
+  document.getElementById('dash-overdue').innerHTML=ovHtml?`<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due</th><th>Status</th></tr></thead><tbody>${ovHtml}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No overdue tasks</div></div>';
 }
 
 // SECTIONS
-async function loadSection(id) {
-  if (id==='clockin') await loadClockIn();
-  else if (id==='dailylog') await loadDailyLog();
-  else if (id==='tasks') await loadTasks();
-  else if (id==='incoming') await loadIncoming();
-  else if (id==='clients') await loadClients();
-  else if (id==='documents') await loadDocuments();
-  else if (id==='events') await loadEvents();
-  else if (id==='notices') await loadNotices();
-  else if (id==='meetings') await loadMeetings();
-  else if (id==='weekly') await loadWeekly();
-  else if (id==='appraisal') await loadAppraisal();
-  else if (id==='stride') await loadStride();
-  else if (id==='feedback') await loadFeedback();
-  else if (id==='admin') await loadAdmin();
+async function loadSection(id){
+  const fns={clockin:loadClockIn,dailylog:loadDailyLog,tasks:loadTasks,incoming:loadIncoming,clients:loadClients,documents:loadDocuments,events:loadEvents,notices:loadNotices,meetings:loadMeetings,weekly:loadWeekly,appraisal:loadAppraisal,loginactivity:loadLoginActivity,stride:loadStride,feedback:loadFeedback,admin:loadAdmin};
+  if(fns[id])await fns[id]();
 }
 
-async function loadClockIn() {
-  const todayStr = today();
-  const clocks = await db('clock_records', {filter:`work_date=eq.${todayStr}`});
-  document.getElementById('clock-date-label').textContent = `Today — ${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
-  const activeStaff = cache.staff.filter(s=>s.access_level==='staff');
-  const html = activeStaff.map(s=>{
-    const rec = clocks.find(c=>c.staff_name===s.full_name);
-    return `<div class="clock-card"><div class="clock-name">${s.full_name}</div><div class="clock-time">${rec?'In: '+rec.clock_in.slice(11,16):'—'}</div><div class="clock-status">${rec?badge('Working','green'):badge('Not In','red')}</div></div>`;
+async function loadClockIn(){
+  const todayStr=today();
+  const clocks=await db('clock_records',{filter:`work_date=eq.${todayStr}`});
+  document.getElementById('clock-date-label').textContent=`Today — ${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
+  const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
+  const clockedNames=[...new Set(clocks.map(c=>c.staff_name))];
+  const html=activeStaff.map(s=>{
+    const rec=clocks.filter(c=>c.staff_name===s.full_name).slice(-1)[0];
+    const clockedOut=rec&&rec.logout_time;
+    return`<div class="clock-card"><div class="clock-name">${s.full_name}</div><div class="clock-time">${rec?'In: '+fmtTime(rec.clock_in)+(clockedOut?' | Out: '+fmtTime(rec.logout_time):''):'—'}</div><div class="clock-status">${rec&&!clockedOut?badge('Working','green'):rec&&clockedOut?badge('Clocked Out','grey'):badge('Not In','red')}</div></div>`;
   }).join('');
-  document.getElementById('clock-grid').innerHTML = html;
+  document.getElementById('clock-grid').innerHTML=html||'<div class="empty-state"><div class="empty-text">No staff data</div></div>';
 }
 
-async function loadDailyLog() {
-  const todayStr = today();
-  const filter = isManagement() ? `log_date=eq.${todayStr}` : `log_date=eq.${todayStr}&staff_name=eq.${encodeURIComponent(currentUser.full_name)}`;
-  const logs = await db('daily_logs', {filter, order:'created_at.desc'});
-  const rows = logs.map(l=>`<tr><td><strong>${l.staff_name}</strong></td><td>${l.client_name||'—'}</td><td>${l.task_type||'—'}</td><td>${l.task_description||'—'}</td><td>${priorityBadge(l.priority)}</td><td>${statusBadge(l.task_status)}</td><td>${l.next_step||'—'}</td></tr>`).join('');
-  document.getElementById('daily-log-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Staff</th><th>Client</th><th>Task Type</th><th>What Was Done</th><th>Priority</th><th>Status</th><th>Next Step</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">📝</div><div class="empty-text">No entries yet today</div><div class="empty-sub">Click Add Log Entry to submit your daily work</div></div>';
+async function loadDailyLog(){
+  const todayStr=today();
+  const filter=isManagement()?`log_date=eq.${todayStr}`:`log_date=eq.${todayStr}&staff_name=eq.${encodeURIComponent(currentUser.full_name)}`;
+  const logs=await db('daily_logs',{filter,order:'created_at.desc'});
+  const rows=logs.map(l=>`<tr><td><strong>${l.staff_name}</strong></td><td>${l.client_name||'—'}</td><td>${l.task_type||'—'}</td><td style="max-width:200px">${l.task_description||'—'}</td><td>${priorityBadge(l.priority)}</td><td>${statusBadge(l.task_status)}</td><td>${l.next_step||'—'}</td></tr>`).join('');
+  document.getElementById('daily-log-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Staff</th><th>Client</th><th>Task Type</th><th>What Was Done</th><th>Priority</th><th>Status</th><th>Next Step</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📝</div><div class="empty-text">No entries yet today</div><div class="empty-sub">Click Add Log Entry to submit your work</div></div>';
 }
 
-async function loadTasks() {
-  const filter = isManagement() ? 'status=neq.Completed' : `status=neq.Completed&assigned_to_name=eq.${encodeURIComponent(currentUser.full_name)}`;
-  const tasks = await db('tasks', {filter, order:'due_date.asc'});
-  const todayStr = today();
-  const rows = tasks.map(t=>{
-    const overdue = t.due_date && t.due_date < todayStr && t.status !== 'Completed';
-    const s = overdue ? 'Overdue' : t.status;
-    return `<tr><td><strong>${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}</td><td>${priorityBadge(t.priority)}</td><td>${statusBadge(s)}</td></tr>`;
+async function loadTasks(){
+  const todayStr=today();
+  const filter=isManagement()?'status=neq.Completed':`status=neq.Completed&assigned_to_name=eq.${encodeURIComponent(currentUser.full_name)}`;
+  const tasks=await db('tasks',{filter,order:'due_date.asc'});
+  const statusOpts=['In Progress','On Track','Blocked','Pending Client','Completed'].map(s=>`<option value="${s}">${s}</option>`).join('');
+  const rows=tasks.map(t=>{
+    const daysAway=t.due_date?Math.ceil((new Date(t.due_date)-new Date())/86400000):null;
+    const isOverdue=daysAway!==null&&daysAway<0;
+    const isDueSoon=daysAway!==null&&daysAway>=0&&daysAway<=3;
+    const rowClass=isOverdue?'alert-row':isDueSoon?'warn-row':'';
+    const alertFlag=isOverdue?'⚠ ':isDueSoon?'⏰ ':'';
+    return`<tr class="${rowClass}"><td><strong>${alertFlag}${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}${isOverdue?' <span style="color:var(--red);font-size:11px;font-weight:700">OVERDUE</span>':isDueSoon?` <span style="color:var(--amber);font-size:11px;font-weight:700">DUE SOON</span>':''}</td><td>${priorityBadge(t.priority)}</td><td><select class="inline-select" onchange="updateTaskStatus('${t.id}',this.value)">${statusOpts.replace(`value="${t.status}"`,`value="${t.status}" selected`)}</select></td></tr>`;
   }).join('');
-  document.getElementById('task-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due Date</th><th>Priority</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No active tasks</div></div>';
+  document.getElementById('task-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due Date</th><th>Priority</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No active tasks</div></div>';
 }
 
-async function loadIncoming() {
-  const incoming = await db('incoming_work', {order:'created_at.desc'});
-  const rows = incoming.map(i=>`<tr><td>${fmtDate(i.date_received)}</td><td>${i.client_name||'—'}</td><td>${i.brief}</td><td>${i.assigned_to_name||'—'}</td><td>${statusBadge(i.status)}</td></tr>`).join('');
-  document.getElementById('incoming-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Date</th><th>Client</th><th>Brief</th><th>Assigned To</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">📥</div><div class="empty-text">No incoming work logged yet</div></div>';
+async function updateTaskStatus(id,newStatus){
+  await fetch(`${SUPABASE_URL}/rest/v1/tasks?id=eq.${id}`,{method:'PATCH',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({status:newStatus,updated_at:new Date().toISOString()})});
+  toast(newStatus==='Completed'?'Task marked as completed!':'Status updated');
+  await loadTasks();
+  await loadDashboard();
 }
 
-async function loadClients() {
-  const clients = await db('clients', {filter:'is_active=eq.true', order:'name.asc'});
-  const rows = clients.map(c=>`<tr><td><strong>${c.name}</strong></td><td>${c.industry||'—'}</td><td>${c.notes||'—'}</td><td>${badge('Active','green')}</td></tr>`).join('');
-  document.getElementById('client-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Client Name</th><th>Industry</th><th>Notes</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-text">No clients loaded</div></div>';
+async function loadIncoming(){
+  const incoming=await db('incoming_work',{order:'created_at.desc'});
+  const rows=incoming.map(i=>`<tr><td>${fmtDate(i.date_received)}</td><td>${i.client_name||'—'}</td><td>${i.brief}</td><td>${i.assigned_to_name||'—'}</td><td>${statusBadge(i.status)}</td></tr>`).join('');
+  document.getElementById('incoming-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Date</th><th>Client</th><th>Brief</th><th>Assigned To</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📥</div><div class="empty-text">No incoming work logged yet</div></div>';
 }
 
-async function loadDocuments() {
-  const docs = await db('document_checklist', {order:'created_at.desc'});
-  const rows = docs.map(d=>`<tr><td>${d.client_name||'—'}</td><td>${d.document_name}</td><td>${fmtDate(d.expected_by)}</td><td>${d.received?badge('Received','green'):badge('Outstanding','red')}</td><td>${d.notes||'—'}</td></tr>`).join('');
-  document.getElementById('document-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Client</th><th>Document</th><th>Expected By</th><th>Status</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">📁</div><div class="empty-text">No documents tracked yet</div></div>';
+async function loadClients(){
+  const clients=await db('clients',{filter:'is_active=eq.true',order:'name.asc'});
+  const rows=clients.map(c=>`<tr><td><strong>${c.name}</strong></td><td>${c.industry||'—'}</td><td>${c.notes||'—'}</td><td>${badge('Active','green')}</td></tr>`).join('');
+  document.getElementById('client-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client Name</th><th>Industry</th><th>Notes</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-text">No clients loaded</div></div>';
 }
 
-async function loadEvents() {
-  const events = await db('events', {order:'event_date.asc'});
-  const todayStr = today();
-  const html = events.map(e=>{
-    const dt = new Date(e.event_date);
-    const daysAway = Math.ceil((dt - new Date())/86400000);
-    const pill = daysAway < 0 ? badge('Past','grey') : daysAway === 0 ? badge('Today','red') : daysAway <= 1 ? badge('Tomorrow','red') : daysAway <= 3 ? badge(`${daysAway} Days`,'amber') : badge(`${daysAway} Days`,'blue');
-    return `<div class="event-item"><div class="event-date-box"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}${e.event_time?' · '+e.event_time:''}</div><div class="notice-meta">Reminder: ${e.reminder_schedule}</div></div>${pill}</div>`;
+async function loadDocuments(){
+  const docs=await db('document_checklist',{order:'created_at.desc'});
+  const rows=docs.map(d=>`<tr><td>${d.client_name||'—'}</td><td>${d.document_name}</td><td>${fmtDate(d.expected_by)}</td><td>${d.received?badge('Received','green'):badge('Outstanding','red')}</td><td>${d.notes||'—'}</td></tr>`).join('');
+  document.getElementById('document-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client</th><th>Document</th><th>Expected By</th><th>Status</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📁</div><div class="empty-text">No documents tracked yet</div></div>';
+}
+
+async function loadEvents(){
+  const events=await db('events',{order:'event_date.asc'});
+  const todayStr=today();
+  const html=events.map(e=>{
+    const dt=new Date(e.event_date);const daysAway=Math.ceil((dt-new Date())/86400000);
+    const pill=daysAway<0?badge('Past','grey'):daysAway===0?badge('Today','red'):daysAway<=1?badge('Tomorrow','red'):daysAway<=3?badge(`${daysAway} Days`,'amber'):badge(`${daysAway} Days`,'blue');
+    return`<div class="event-item"><div class="event-date-box" style="${daysAway<0?'background:var(--slate)':''}"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}${e.event_time?' · '+e.event_time:''}</div><div class="notice-meta">Reminder: ${e.reminder_schedule}</div></div>${pill}</div>`;
   }).join('');
-  document.getElementById('events-list').innerHTML = html || '<div class="empty-state" style="padding:40px"><div class="empty-icon">📅</div><div class="empty-text">No events logged yet</div></div>';
+  document.getElementById('events-list').innerHTML=html||'<div class="empty-state" style="padding:40px"><div class="empty-icon">📅</div><div class="empty-text">No events logged yet</div></div>';
 }
 
-async function loadNotices() {
-  const notices = await db('notices', {filter:'is_active=eq.true', order:'created_at.desc'});
-  document.getElementById('badge-notices').textContent = notices.length;
-  const html = notices.map(n=>`<div class="notice-item"><div class="notice-dot"></div><div><div class="notice-text"><strong>${n.title}</strong><br>${n.body}</div><div class="notice-meta">Posted by ${n.posted_by_name||'Management'} · ${fmtDate(n.created_at?.split('T')[0])}</div></div></div>`).join('');
-  document.getElementById('notices-list').innerHTML = html || '<div class="empty-state" style="padding:40px"><div class="empty-icon">📢</div><div class="empty-text">No notices posted yet</div></div>';
+async function loadNotices(){
+  const notices=await db('notices',{filter:'is_active=eq.true',order:'created_at.desc'});
+  document.getElementById('badge-notices').textContent=notices.length;
+  const html=notices.map(n=>`<div class="notice-item"><div class="notice-dot"></div><div><div class="notice-text"><strong>${n.title}</strong><br>${n.body}</div><div class="notice-meta">Posted by ${n.posted_by_name||'Management'} · ${fmtDate(n.created_at?.split('T')[0])}</div></div></div>`).join('');
+  document.getElementById('notices-list').innerHTML=html||'<div class="empty-state" style="padding:40px"><div class="empty-icon">📢</div><div class="empty-text">No notices posted yet</div></div>';
 }
 
-async function loadMeetings() {
-  const meetings = await db('meetings', {order:'meeting_date.desc'});
-  const rows = meetings.map(m=>`<tr><td>${fmtDate(m.meeting_date)}</td><td>${m.meeting_type||'—'}</td><td>${m.attendees||'—'}</td><td>${m.key_outcome||'—'}</td><td>${m.action_points||'—'}</td></tr>`).join('');
-  document.getElementById('meeting-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Date</th><th>Type</th><th>Attendees</th><th>Outcome</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">🤝</div><div class="empty-text">No meetings logged yet</div></div>';
+async function loadMeetings(){
+  const meetings=await db('meetings',{order:'meeting_date.desc'});
+  const rows=meetings.map(m=>`<tr><td>${fmtDate(m.meeting_date)}</td><td>${m.meeting_type||'—'}</td><td>${m.attendees||'—'}</td><td>${m.key_outcome||'—'}</td><td>${m.action_points||'—'}</td></tr>`).join('');
+  document.getElementById('meeting-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Date</th><th>Type</th><th>Attendees</th><th>Outcome</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">🤝</div><div class="empty-text">No meetings logged yet</div></div>';
 }
 
-async function loadWeekly() {
-  const weekAgo = new Date(); weekAgo.setDate(weekAgo.getDate()-7);
-  const logs = await db('daily_logs', {filter:`log_date=gte.${weekAgo.toISOString().split('T')[0]}`, order:'log_date.desc'});
-  const activeStaff = cache.staff.filter(s=>s.access_level==='staff');
-  const rows = activeStaff.map(s=>{
-    const myLogs = logs.filter(l=>l.staff_name===s.full_name);
-    const days = new Set(myLogs.map(l=>l.log_date)).size;
-    const completed = myLogs.filter(l=>l.task_status==='Completed').length;
-    const inProgress = myLogs.filter(l=>l.task_status==='In Progress').length;
-    const urgent = myLogs.filter(l=>l.priority==='URGENT').length;
-    let rating = badge('No Data','grey');
-    if (days >= 4) rating = badge('Strong Week','green');
-    else if (days >= 3) rating = badge('Satisfactory','blue');
-    else if (days >= 1) rating = badge('Needs Attention','amber');
-    return `<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td style="text-align:center">${days}</td><td style="text-align:center">${completed}</td><td style="text-align:center">${inProgress}</td><td style="text-align:center">${urgent}</td><td>${rating}</td></tr>`;
+async function loadWeekly(){
+  const weekAgo=new Date();weekAgo.setDate(weekAgo.getDate()-7);
+  const logs=await db('daily_logs',{filter:`log_date=gte.${weekAgo.toISOString().split('T')[0]}`,order:'log_date.desc'});
+  const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
+  const rows=activeStaff.map(s=>{
+    const myLogs=logs.filter(l=>l.staff_name===s.full_name);
+    const days=new Set(myLogs.map(l=>l.log_date)).size;
+    const completed=myLogs.filter(l=>l.task_status==='Completed').length;
+    const inProgress=myLogs.filter(l=>l.task_status==='In Progress').length;
+    const urgent=myLogs.filter(l=>l.priority==='URGENT').length;
+    let r=badge('No Data','grey');
+    if(days>=4)r=badge('Strong Week','green');
+    else if(days>=3)r=badge('Satisfactory','blue');
+    else if(days>=1)r=badge('Needs Attention','amber');
+    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td style="text-align:center">${days}</td><td style="text-align:center">${completed}</td><td style="text-align:center">${inProgress}</td><td style="text-align:center">${urgent}</td><td>${r}</td></tr>`;
   }).join('');
-  document.getElementById('weekly-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Days Logged</th><th>Completed</th><th>In Progress</th><th>URGENT Items</th><th>Rating</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state"><div class="empty-text">No log data this week</div></div>';
+  document.getElementById('weekly-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Days Logged</th><th>Completed</th><th>In Progress</th><th>URGENT Items</th><th>Rating</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state"><div class="empty-text">No log data this week</div></div>';
 }
 
-async function loadAppraisal() {
-  const thirtyDaysAgo = new Date(); thirtyDaysAgo.setDate(thirtyDaysAgo.getDate()-30);
-  const logs = await db('daily_logs', {filter:`log_date=gte.${thirtyDaysAgo.toISOString().split('T')[0]}`});
-  const workingDays = 22;
-  const activeStaff = cache.staff.filter(s=>s.access_level==='staff');
-  const barRows = activeStaff.map(s=>{
-    const myLogs = logs.filter(l=>l.staff_name===s.full_name);
-    const days = new Set(myLogs.map(l=>l.log_date)).size;
-    const pct = Math.min(Math.round(days/workingDays*100), 100);
-    const color = pct >= 80 ? 'var(--sky)' : pct >= 60 ? '#C4972A' : 'var(--red)';
-    return `<div class="perf-bar-wrap"><div class="perf-name">${s.full_name.split(' ')[0]}</div><div class="perf-bar-bg"><div class="perf-bar" style="width:${pct}%;background:${color}"></div></div><div class="perf-val">${pct}%</div></div>`;
+async function loadAppraisal(){
+  const q=document.getElementById('appraisal-quarter')?.value||'Q3';
+  const y=parseInt(document.getElementById('appraisal-year')?.value||'2026');
+  const[qStart,qEnd]=getQuarterDates(q,y);
+  const workingDays=q==='Q1'?60:q==='Q2'?65:q==='Q3'?65:62;
+
+  const[logs,tasks,notes]=await Promise.all([
+    db('daily_logs',{filter:`log_date=gte.${qStart}&log_date=lte.${qEnd}`}),
+    db('tasks',{filter:`created_at=gte.${qStart}&created_at=lte.${qEnd}T23:59:59`}),
+    db('appraisal_notes',{filter:`quarter=eq.${q}&year=eq.${y}`})
+  ]);
+
+  const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
+  const cards=activeStaff.map(s=>{
+    const myLogs=logs.filter(l=>l.staff_name===s.full_name);
+    const myTasks=tasks.filter(t=>t.assigned_to_name===s.full_name);
+    const daysLogged=new Set(myLogs.map(l=>l.log_date)).size;
+    const activityPct=Math.min(Math.round(daysLogged/workingDays*100),100);
+    const completed=myLogs.filter(l=>l.task_status==='Completed').length;
+    const totalEntries=myLogs.length;
+    const completionRate=totalEntries>0?Math.round(completed/totalEntries*100):0;
+    const urgentHandled=myLogs.filter(l=>l.priority==='URGENT'&&l.task_status==='Completed').length;
+    const urgentTotal=myLogs.filter(l=>l.priority==='URGENT').length;
+    const hasNextStep=myLogs.filter(l=>l.next_step&&l.next_step.trim().length>0).length;
+    const logQuality=totalEntries>0?Math.round(hasNextStep/totalEntries*100):0;
+    const tasksDone=myTasks.filter(t=>t.status==='Completed').length;
+    const tasksTotal=myTasks.length;
+    const barColor=activityPct>=80?'var(--sky)':activityPct>=60?'#C4972A':'var(--red)';
+    const existingNote=notes.find(n=>n.staff_name===s.full_name);
+    let overallRating=existingNote?.overall_rating||'Not Yet Rated';
+    if(!existingNote){
+      if(activityPct>=85&&completionRate>=70)overallRating='Performing Well';
+      else if(activityPct>=60)overallRating='Developing';
+      else if(daysLogged>0)overallRating='Needs Immediate Attention';
+    }
+    const ratingBadge=overallRating==='Performing Well'?badge('Performing Well','green'):overallRating==='Developing'?badge('Developing','amber'):overallRating==='Needs Immediate Attention'?badge('Needs Immediate Attention','red'):badge('Not Yet Rated','grey');
+    return`<div class="appraisal-staff-card">
+      <div class="appraisal-staff-name">
+        <span>${s.full_name} <span style="font-size:11px;font-weight:400;color:var(--slate)">${s.department||''}</span></span>
+        ${ratingBadge}
+      </div>
+      <div class="metric-grid">
+        <div class="metric-box"><div class="metric-val">${daysLogged}</div><div class="metric-label">Days Logged</div></div>
+        <div class="metric-box"><div class="metric-val">${activityPct}%</div><div class="metric-label">Activity Rate</div></div>
+        <div class="metric-box"><div class="metric-val">${completionRate}%</div><div class="metric-label">Completion Rate</div></div>
+        <div class="metric-box"><div class="metric-val">${urgentHandled}/${urgentTotal}</div><div class="metric-label">URGENT Handled</div></div>
+        <div class="metric-box"><div class="metric-val">${logQuality}%</div><div class="metric-label">Log Quality</div></div>
+      </div>
+      <div class="perf-bar-wrap"><div class="perf-name">Activity</div><div class="perf-bar-bg"><div class="perf-bar" style="width:${activityPct}%;background:${barColor}"></div></div><div class="perf-val">${activityPct}%</div></div>
+      <div style="margin-top:12px">
+        <label class="form-label">Coordinator Notes — ${q} ${y}</label>
+        <textarea class="form-textarea" id="note-${s.full_name.replace(/\s/g,'_')}" style="min-height:70px" placeholder="Add your appraisal notes for ${s.full_name.split(' ')[0]} here...">${existingNote?.coordinator_notes||''}</textarea>
+        <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
+          <select class="inline-select" id="rating-${s.full_name.replace(/\s/g,'_')}" style="font-size:13px;padding:6px 10px">
+            <option value="Performing Well" ${overallRating==='Performing Well'?'selected':''}>Performing Well</option>
+            <option value="Developing" ${overallRating==='Developing'?'selected':''}>Developing</option>
+            <option value="Needs Immediate Attention" ${overallRating==='Needs Immediate Attention'?'selected':''}>Needs Immediate Attention</option>
+            <option value="Not Yet Rated" ${overallRating==='Not Yet Rated'?'selected':''}>Not Yet Rated</option>
+          </select>
+          <button class="btn btn-primary btn-sm" onclick="saveAppraisalNote('${s.full_name}','${q}',${y})">Save Notes</button>
+        </div>
+      </div>
+    </div>`;
   }).join('');
-  const ratingRows = activeStaff.map(s=>{
-    const myLogs = logs.filter(l=>l.staff_name===s.full_name);
-    const days = new Set(myLogs.map(l=>l.log_date)).size;
-    const pct = Math.round(days/workingDays*100);
-    let r = badge('Performing Well','green');
-    if (pct < 60) r = badge('Needs Immediate Attention','red');
-    else if (pct < 80) r = badge('Developing','amber');
-    return `<tr><td><strong>${s.full_name}</strong></td><td>${r}</td><td>${days} days logged</td></tr>`;
+  document.getElementById('appraisal-content').innerHTML=`<div style="font-size:12px;color:var(--slate);margin-bottom:14px;font-style:italic">${q} ${y} · Based on daily log submissions · Not visible to staff</div>${cards}`;
+}
+
+async function saveAppraisalNote(staffName,quarter,year){
+  const key=staffName.replace(/\s/g,'_');
+  const notes=document.getElementById(`note-${key}`)?.value||'';
+  const rating=document.getElementById(`rating-${key}`)?.value||'Not Yet Rated';
+  try{
+    await fetch(`${SUPABASE_URL}/rest/v1/appraisal_notes`,{method:'POST',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates'},body:JSON.stringify({staff_name:staffName,quarter,year,coordinator_notes:notes,overall_rating:rating,created_by:currentUser.full_name,updated_at:new Date().toISOString()})});
+    toast(`Notes saved for ${staffName.split(' ')[0]}`);
+  }catch(e){toast('Could not save notes','error');}
+}
+
+async function loadLoginActivity(){
+  const dateFilter=document.getElementById('activity-date')?.value||today();
+  const activity=await db('login_activity',{filter:`session_date=eq.${dateFilter}`,order:'login_time.desc'});
+  const rows=activity.map(a=>{
+    const dur=a.duration_minutes?`${a.duration_minutes} min`:a.logout_time?'—':'Active';
+    const ltype=a.logout_type==='auto'?badge('Auto-logout','amber'):a.logout_type==='manual'?badge('Manual','grey'):badge('Active','green');
+    return`<tr><td><strong>${a.staff_name}</strong></td><td>${fmtTime(a.login_time)}</td><td>${a.logout_time?fmtTime(a.logout_time):'Still logged in'}</td><td>${dur}</td><td>${ltype}</td></tr>`;
   }).join('');
-  document.getElementById('appraisal-content').innerHTML = `
-    <div style="margin-bottom:20px"><div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px">Activity Rate — Last 30 Days</div>${barRows}</div>
-    <div><div style="font-size:13px;font-weight:600;color:var(--navy);margin-bottom:12px">Performance Ratings</div><table class="data-table" style="border:1px solid var(--border);border-radius:8px;overflow:hidden"><thead><tr><th>Staff</th><th>Rating</th><th>Log Activity</th></tr></thead><tbody>${ratingRows}</tbody></table></div>
-    <div style="margin-top:14px;font-size:11.5px;color:var(--slate);font-style:italic">Based on daily log submissions over the last 30 working days. Not visible to staff.</div>`;
-}
+  document.getElementById('login-activity-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Staff Member</th><th>Logged In</th><th>Logged Out</th><th>Duration</th><th>Type</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-text">No activity for this date</div></div>';
 
-async function loadStride() {
-  const activities = await db('stride_activity', {order:'created_at.desc'});
-  const rows = activities.map(a=>`<tr><td><strong>${a.client_name||'—'}</strong></td><td>${a.stride_stage||'—'}</td><td>${a.assigned_to_name||'—'}</td><td>${fmtDate(a.activity_date)}</td><td>${a.outcome||'—'}</td><td>${statusBadge(a.status)}</td></tr>`).join('');
-  document.getElementById('stride-table').innerHTML = rows ? `<table class="data-table"><thead><tr><th>Client</th><th>STRIDE Stage</th><th>Assigned To</th><th>Date</th><th>Outcome</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>` : '<div class="empty-state" style="padding:30px"><div class="empty-icon">🔷</div><div class="empty-text">No STRIDE activity logged yet</div></div>';
-}
-
-async function loadFeedback() {
-  const fb = await db('client_feedback', {order:'created_at.desc'});
-  const html = fb.map(f=>{
-    const stars = Array.from({length:5},(_,i)=>`<span class="star${i>=f.rating?' empty':''}"">★</span>`).join('');
-    return `<div class="feedback-item"><div class="feedback-score">${stars}</div><div style="font-size:13px;color:var(--navy)">${f.feedback_text||'No comment provided'}</div><div class="notice-meta">${f.client_name||'Anonymous'} · ${fmtDate(f.received_date)}</div></div>`;
+  // Weekly time tracking
+  const weekAgo=new Date();weekAgo.setDate(weekAgo.getDate()-7);
+  const weekActivity=await db('login_activity',{filter:`session_date=gte.${weekAgo.toISOString().split('T')[0]}`,order:'staff_name.asc'});
+  const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
+  const timeRows=activeStaff.map(s=>{
+    const myActivity=weekActivity.filter(a=>a.staff_name===s.full_name);
+    const totalMins=myActivity.reduce((sum,a)=>sum+(a.duration_minutes||0),0);
+    const hours=Math.floor(totalMins/60);
+    const mins=totalMins%60;
+    const sessions=myActivity.length;
+    const timeStr=totalMins>0?`${hours}h ${mins}m`:'No data';
+    return`<tr><td><strong>${s.full_name}</strong></td><td>${sessions}</td><td><span class="time-badge">${timeStr}</span></td><td>${sessions>0?badge('Active','green'):badge('No Activity','grey')}</td></tr>`;
   }).join('');
-  document.getElementById('feedback-list').innerHTML = html || '<div class="empty-state" style="padding:40px"><div class="empty-icon">💬</div><div class="empty-text">No feedback yet</div></div>';
+  document.getElementById('time-tracking-table').innerHTML=timeRows?`<table class="data-table"><thead><tr><th>Staff Member</th><th>Sessions This Week</th><th>Total Time on System</th><th>Status</th></tr></thead><tbody>${timeRows}</tbody></table>`:'<div class="empty-state"><div class="empty-text">No data yet</div></div>';
 }
 
-async function loadAdmin() {
-  const staffList = cache.staff.map(s=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;font-weight:500">${s.full_name}</div><div style="font-size:11.5px;color:var(--slate)">${s.department||'—'} · ${s.role||'—'}</div></div><div style="display:flex;gap:8px;align-items:center">${badge(s.access_level,'navy')}<div style="font-size:11px;color:var(--slate-light)">${s.is_active?'Active':'Inactive'}</div></div></div>`).join('');
-  document.getElementById('admin-staff-list').innerHTML = staffList;
+async function loadStride(){
+  const activities=await db('stride_activity',{order:'created_at.desc'});
+  const rows=activities.map(a=>`<tr><td><strong>${a.client_name||'—'}</strong></td><td>${a.stride_stage||'—'}</td><td>${a.assigned_to_name||'—'}</td><td>${fmtDate(a.activity_date)}</td><td>${a.outcome||'—'}</td><td>${statusBadge(a.status)}</td></tr>`).join('');
+  document.getElementById('stride-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client</th><th>Stage</th><th>Assigned To</th><th>Date</th><th>Outcome</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">🔷</div><div class="empty-text">No STRIDE activity yet</div></div>';
+}
+
+async function loadFeedback(){
+  const fb=await db('client_feedback',{order:'created_at.desc'});
+  const html=fb.map(f=>{const stars=Array.from({length:5},(_,i)=>`<span class="star${i>=f.rating?' empty':''}"">★</span>`).join('');return`<div class="feedback-item"><div class="feedback-score">${stars}</div><div style="font-size:13px;color:var(--navy)">${f.feedback_text||'No comment'}</div><div class="notice-meta">${f.client_name||'Anonymous'} · ${fmtDate(f.received_date)}</div></div>`;}).join('');
+  document.getElementById('feedback-list').innerHTML=html||'<div class="empty-state" style="padding:40px"><div class="empty-icon">💬</div><div class="empty-text">No feedback yet</div></div>';
+}
+
+async function loadAdmin(){
+  const staffList=cache.staff.map(s=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;font-weight:500">${s.full_name}</div><div style="font-size:11.5px;color:var(--slate)">${s.department||'—'} · ${s.role||'—'}</div></div><div style="display:flex;gap:8px;align-items:center">${badge(s.access_level,'navy')}<div style="font-size:11px;color:var(--slate-light)">${s.is_active?'Active':'Inactive'}</div></div></div>`).join('');
+  document.getElementById('admin-staff-list').innerHTML=staffList;
 }
 
 // SUBMIT FUNCTIONS
-async function submitClockIn() {
-  const staff = document.getElementById('ci-staff').value;
-  const notes = document.getElementById('ci-notes').value;
-  const date = document.getElementById('ci-date').value;
-  if (!staff) { toast('Please select a staff member','error'); return; }
-  await dbInsert('clock_records', {staff_name:staff, clock_in:new Date().toISOString(), work_date:date, notes});
-  toast('Clocked in successfully');
-  closeModal('modal-clockin');
-  await loadClockIn();
-  await loadDashboard();
+async function submitClockIn(){
+  const staff=document.getElementById('ci-staff').value;
+  const notes=document.getElementById('ci-notes').value;
+  if(!staff){toast('Please select a staff member','error');return;}
+  const todayStr=today();
+  const existing=await db('clock_records',{filter:`work_date=eq.${todayStr}&staff_name=eq.${encodeURIComponent(staff)}`});
+  if(existing.length>0){toast(`${staff} has already clocked in today`,'error');closeModal('modal-clockin');return;}
+  await dbInsert('clock_records',{staff_name:staff,clock_in:new Date().toISOString(),work_date:todayStr,notes});
+  toast('Clocked in successfully');closeModal('modal-clockin');
+  document.getElementById('ci-notes').value='';
+  await loadClockIn();await loadDashboard();
 }
 
-async function submitDailyLog() {
-  const d = {
-    staff_name: document.getElementById('dl-staff').value,
-    log_date: document.getElementById('dl-date').value,
-    client_name: document.getElementById('dl-client').value,
-    task_type: document.getElementById('dl-tasktype').value,
-    task_description: document.getElementById('dl-description').value,
-    task_status: document.getElementById('dl-status').value,
-    priority: document.getElementById('dl-priority').value,
-    next_step: document.getElementById('dl-nextstep').value,
-    notes: document.getElementById('dl-notes').value
-  };
-  if (!d.staff_name||!d.task_description) { toast('Please fill in staff member and task description','error'); return; }
-  await dbInsert('daily_logs', d);
-  toast('Log entry saved successfully');
-  closeModal('modal-dailylog');
-  document.getElementById('dl-description').value='';
-  document.getElementById('dl-nextstep').value='';
-  document.getElementById('dl-notes').value='';
-  await loadDailyLog();
-  await loadDashboard();
+async function submitClockOut(){
+  const staff=document.getElementById('co-staff').value;
+  const notes=document.getElementById('co-notes').value;
+  if(!staff){toast('Please select a staff member','error');return;}
+  const todayStr=today();
+  const existing=await db('clock_records',{filter:`work_date=eq.${todayStr}&staff_name=eq.${encodeURIComponent(staff)}`});
+  if(existing.length===0){toast(`${staff} has not clocked in today`,'error');return;}
+  const rec=existing[existing.length-1];
+  if(rec.clock_out){toast(`${staff} has already clocked out today`,'error');return;}
+  await fetch(`${SUPABASE_URL}/rest/v1/clock_records?id=eq.${rec.id}`,{method:'PATCH',headers:{'apikey':SUPABASE_KEY,'Authorization':`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json'},body:JSON.stringify({clock_out:new Date().toISOString(),logout_notes:notes})});
+  toast('Clocked out successfully');closeModal('modal-clockout');
+  document.getElementById('co-notes').value='';
+  await loadClockIn();await loadDashboard();
 }
 
-async function submitTask() {
-  const d = {
-    title: document.getElementById('t-title').value,
-    client_name: document.getElementById('t-client').value,
-    task_type: document.getElementById('t-tasktype').value,
-    assigned_to_name: document.getElementById('t-assigned').value,
-    due_date: document.getElementById('t-due').value || null,
-    priority: document.getElementById('t-priority').value,
-    description: document.getElementById('t-description').value,
-    created_by_name: currentUser.full_name,
-    status: 'In Progress'
-  };
-  if (!d.title) { toast('Please enter a task title','error'); return; }
-  await dbInsert('tasks', d);
-  toast('Task added successfully');
-  closeModal('modal-task');
-  document.getElementById('t-title').value='';
-  document.getElementById('t-description').value='';
+async function submitDailyLog(){
+  const d={staff_name:document.getElementById('dl-staff').value,log_date:document.getElementById('dl-date').value,client_name:document.getElementById('dl-client').value,task_type:document.getElementById('dl-tasktype').value,task_description:document.getElementById('dl-description').value,task_status:document.getElementById('dl-status').value,priority:document.getElementById('dl-priority').value,next_step:document.getElementById('dl-nextstep').value,notes:document.getElementById('dl-notes').value};
+  if(!d.staff_name||!d.task_description){toast('Please fill in staff member and task description','error');return;}
+  await dbInsert('daily_logs',d);
+  toast('Log entry saved');closeModal('modal-dailylog');
+  ['dl-description','dl-nextstep','dl-notes'].forEach(id=>{document.getElementById(id).value='';});
+  await loadDailyLog();await loadDashboard();
+}
+
+async function submitTask(){
+  const d={title:document.getElementById('t-title').value,client_name:document.getElementById('t-client').value,task_type:document.getElementById('t-tasktype').value,assigned_to_name:document.getElementById('t-assigned').value,due_date:document.getElementById('t-due').value||null,priority:document.getElementById('t-priority').value,description:document.getElementById('t-description').value,created_by_name:currentUser.full_name,status:'In Progress'};
+  if(!d.title){toast('Please enter a task title','error');return;}
+  await dbInsert('tasks',d);
+  toast('Task added');closeModal('modal-task');
+  document.getElementById('t-title').value='';document.getElementById('t-description').value='';
   await loadTasks();
 }
 
-async function submitIncoming() {
-  const d = {
-    client_name: document.getElementById('iw-client').value,
-    brief: document.getElementById('iw-brief').value,
-    assigned_to_name: document.getElementById('iw-assigned').value,
-    date_received: document.getElementById('iw-date').value,
-    status: document.getElementById('iw-status').value
-  };
-  if (!d.brief) { toast('Please describe the incoming work','error'); return; }
-  await dbInsert('incoming_work', d);
-  toast('Incoming work logged');
-  closeModal('modal-incoming');
-  document.getElementById('iw-brief').value='';
-  await loadIncoming();
+async function submitIncoming(){
+  const d={client_name:document.getElementById('iw-client').value,brief:document.getElementById('iw-brief').value,assigned_to_name:document.getElementById('iw-assigned').value,date_received:document.getElementById('iw-date').value,status:document.getElementById('iw-status').value};
+  if(!d.brief){toast('Please describe the incoming work','error');return;}
+  await dbInsert('incoming_work',d);toast('Incoming work logged');closeModal('modal-incoming');
+  document.getElementById('iw-brief').value='';await loadIncoming();
 }
 
-async function submitEvent() {
-  const d = {
-    title: document.getElementById('ev-title').value,
-    client_name: document.getElementById('ev-client').value,
-    assigned_to_name: document.getElementById('ev-assigned').value,
-    event_date: document.getElementById('ev-date').value,
-    event_time: document.getElementById('ev-time').value,
-    reminder_schedule: document.getElementById('ev-reminder').value,
-    notes: document.getElementById('ev-notes').value,
-    created_by_name: currentUser.full_name
-  };
-  if (!d.title||!d.event_date) { toast('Please enter title and date','error'); return; }
-  await dbInsert('events', d);
-  toast('Event saved successfully');
-  closeModal('modal-event');
-  document.getElementById('ev-title').value='';
-  document.getElementById('ev-notes').value='';
-  await loadEvents();
-  await loadDashboard();
+async function submitEvent(){
+  const d={title:document.getElementById('ev-title').value,client_name:document.getElementById('ev-client').value,assigned_to_name:document.getElementById('ev-assigned').value,event_date:document.getElementById('ev-date').value,event_time:document.getElementById('ev-time').value,reminder_schedule:document.getElementById('ev-reminder').value,notes:document.getElementById('ev-notes').value,created_by_name:currentUser.full_name};
+  if(!d.title||!d.event_date){toast('Please enter title and date','error');return;}
+  await dbInsert('events',d);toast('Event saved');closeModal('modal-event');
+  document.getElementById('ev-title').value='';document.getElementById('ev-notes').value='';
+  await loadEvents();await loadDashboard();
 }
 
-async function submitNotice() {
-  const d = {title:document.getElementById('n-title').value, body:document.getElementById('n-body').value, posted_by_name:currentUser.full_name};
-  if (!d.title||!d.body) { toast('Please fill in title and message','error'); return; }
-  await dbInsert('notices', d);
-  toast('Notice posted');
-  closeModal('modal-notice');
-  document.getElementById('n-title').value='';
-  document.getElementById('n-body').value='';
+async function submitNotice(){
+  const d={title:document.getElementById('n-title').value,body:document.getElementById('n-body').value,posted_by_name:currentUser.full_name};
+  if(!d.title||!d.body){toast('Please fill in title and message','error');return;}
+  await dbInsert('notices',d);toast('Notice posted');closeModal('modal-notice');
+  document.getElementById('n-title').value='';document.getElementById('n-body').value='';
   await loadNotices();
 }
 
-async function submitMeeting() {
-  const d = {meeting_date:document.getElementById('mt-date').value, meeting_type:document.getElementById('mt-type').value, attendees:document.getElementById('mt-attendees').value, key_outcome:document.getElementById('mt-outcome').value, action_points:document.getElementById('mt-actions').value, recorded_by_name:currentUser.full_name};
-  if (!d.meeting_date) { toast('Please enter a meeting date','error'); return; }
-  await dbInsert('meetings', d);
-  toast('Meeting logged');
-  closeModal('modal-meeting');
-  document.getElementById('mt-attendees').value='';
-  document.getElementById('mt-outcome').value='';
-  document.getElementById('mt-actions').value='';
+async function submitMeeting(){
+  const d={meeting_date:document.getElementById('mt-date').value,meeting_type:document.getElementById('mt-type').value,attendees:document.getElementById('mt-attendees').value,key_outcome:document.getElementById('mt-outcome').value,action_points:document.getElementById('mt-actions').value,recorded_by_name:currentUser.full_name};
+  if(!d.meeting_date){toast('Please enter a meeting date','error');return;}
+  await dbInsert('meetings',d);toast('Meeting logged');closeModal('modal-meeting');
+  ['mt-attendees','mt-outcome','mt-actions'].forEach(id=>{document.getElementById(id).value='';});
   await loadMeetings();
 }
 
-async function submitClient() {
-  const d = {name:document.getElementById('cl-name').value, industry:document.getElementById('cl-industry').value, notes:document.getElementById('cl-notes').value};
-  if (!d.name) { toast('Please enter a client name','error'); return; }
-  await dbInsert('clients', d);
-  cache.clients = await db('clients', {filter:'is_active=eq.true', order:'name.asc'});
-  populateAllDropdowns();
-  toast('Client added');
-  closeModal('modal-client');
-  document.getElementById('cl-name').value='';
-  document.getElementById('cl-industry').value='';
-  document.getElementById('cl-notes').value='';
+async function submitClient(){
+  const d={name:document.getElementById('cl-name').value,industry:document.getElementById('cl-industry').value,notes:document.getElementById('cl-notes').value};
+  if(!d.name){toast('Please enter a client name','error');return;}
+  await dbInsert('clients',d);
+  cache.clients=await db('clients',{filter:'is_active=eq.true',order:'name.asc'});
+  populateAllDropdowns();toast('Client added');closeModal('modal-client');
+  document.getElementById('cl-name').value='';document.getElementById('cl-industry').value='';document.getElementById('cl-notes').value='';
   await loadClients();
 }
 
-async function submitDocument() {
-  const d = {client_name:document.getElementById('doc-client').value, document_name:document.getElementById('doc-name').value, expected_by:document.getElementById('doc-expected').value||null, received:document.getElementById('doc-received').value==='true', notes:document.getElementById('doc-notes').value};
-  if (!d.document_name) { toast('Please enter a document name','error'); return; }
-  await dbInsert('document_checklist', d);
-  toast('Document added to checklist');
-  closeModal('modal-document');
-  document.getElementById('doc-name').value='';
-  document.getElementById('doc-notes').value='';
+async function submitDocument(){
+  const d={client_name:document.getElementById('doc-client').value,document_name:document.getElementById('doc-name').value,expected_by:document.getElementById('doc-expected').value||null,received:document.getElementById('doc-received').value==='true',notes:document.getElementById('doc-notes').value};
+  if(!d.document_name){toast('Please enter a document name','error');return;}
+  await dbInsert('document_checklist',d);toast('Document added');closeModal('modal-document');
+  document.getElementById('doc-name').value='';document.getElementById('doc-notes').value='';
   await loadDocuments();
 }
 
-async function submitStride() {
-  const d = {client_name:document.getElementById('st-client').value, stride_stage:document.getElementById('st-stage').value, assigned_to_name:document.getElementById('st-assigned').value, activity_date:document.getElementById('st-date').value, status:document.getElementById('st-status').value, outcome:document.getElementById('st-outcome').value};
-  await dbInsert('stride_activity', d);
-  toast('STRIDE activity logged');
-  closeModal('modal-stride');
-  document.getElementById('st-outcome').value='';
-  await loadStride();
+async function submitStride(){
+  const d={client_name:document.getElementById('st-client').value,stride_stage:document.getElementById('st-stage').value,assigned_to_name:document.getElementById('st-assigned').value,activity_date:document.getElementById('st-date').value,status:document.getElementById('st-status').value,outcome:document.getElementById('st-outcome').value};
+  await dbInsert('stride_activity',d);toast('STRIDE activity logged');closeModal('modal-stride');
+  document.getElementById('st-outcome').value='';await loadStride();
 }
 
-async function submitFeedback() {
-  const d = {client_name:document.getElementById('fb-client').value, rating:parseInt(document.getElementById('fb-rating').value), feedback_text:document.getElementById('fb-text').value, received_date:document.getElementById('fb-date').value};
-  await dbInsert('client_feedback', d);
-  toast('Feedback saved');
-  closeModal('modal-feedback');
-  document.getElementById('fb-text').value='';
-  await loadFeedback();
+async function submitFeedback(){
+  const d={client_name:document.getElementById('fb-client').value,rating:parseInt(document.getElementById('fb-rating').value),feedback_text:document.getElementById('fb-text').value,received_date:document.getElementById('fb-date').value};
+  await dbInsert('client_feedback',d);toast('Feedback saved');closeModal('modal-feedback');
+  document.getElementById('fb-text').value='';await loadFeedback();
 }
 
-async function submitAddStaff() {
-  const d = {full_name:document.getElementById('as-name').value, department:document.getElementById('as-dept').value, role:document.getElementById('as-role').value, access_level:document.getElementById('as-access').value, password_plain:document.getElementById('as-password').value, must_change_password:true, is_active:true};
-  if (!d.full_name||!d.password_plain) { toast('Please enter name and password','error'); return; }
-  await dbInsert('staff', d);
-  cache.staff = await db('staff', {filter:'is_active=eq.true', order:'full_name.asc'});
-  populateAllDropdowns();
-  toast('Staff member added');
-  closeModal('modal-addstaff');
-  document.getElementById('as-name').value='';
-  document.getElementById('as-role').value='';
-  document.getElementById('as-password').value='';
+async function submitAddStaff(){
+  const d={full_name:document.getElementById('as-name').value,department:document.getElementById('as-dept').value,role:document.getElementById('as-role').value,access_level:document.getElementById('as-access').value,password_plain:document.getElementById('as-password').value,must_change_password:true,is_active:true};
+  if(!d.full_name||!d.password_plain){toast('Please enter name and password','error');return;}
+  await dbInsert('staff',d);
+  cache.staff=await db('staff',{filter:'is_active=eq.true',order:'full_name.asc'});
+  populateAllDropdowns();toast('Staff member added');closeModal('modal-addstaff');
+  ['as-name','as-role','as-password'].forEach(id=>{document.getElementById(id).value='';});
   await loadAdmin();
 }
 
-async function submitTaskType() {
-  const name = document.getElementById('att-name').value;
-  if (!name) { toast('Please enter a task type name','error'); return; }
-  await dbInsert('task_types', {name});
-  cache.taskTypes = await db('task_types', {order:'name.asc'});
-  populateAllDropdowns();
-  toast('Task type added');
-  closeModal('modal-addtasktype');
+async function submitTaskType(){
+  const name=document.getElementById('att-name').value;
+  if(!name){toast('Please enter a task type name','error');return;}
+  await dbInsert('task_types',{name});
+  cache.taskTypes=await db('task_types',{order:'name.asc'});
+  populateAllDropdowns();toast('Task type added');closeModal('modal-addtasktype');
   document.getElementById('att-name').value='';
 }
 
-async function submitDept() {
-  const name = document.getElementById('adept-name').value;
-  if (!name) { toast('Please enter a department name','error'); return; }
-  await dbInsert('departments', {name});
-  cache.departments = await db('departments', {order:'name.asc'});
-  populateAllDropdowns();
-  toast('Department added');
-  closeModal('modal-adddept');
+async function submitDept(){
+  const name=document.getElementById('adept-name').value;
+  if(!name){toast('Please enter a department name','error');return;}
+  await dbInsert('departments',{name});
+  cache.departments=await db('departments',{order:'name.asc'});
+  populateAllDropdowns();toast('Department added');closeModal('modal-adddept');
   document.getElementById('adept-name').value='';
 }
 
-// NAV
-function showSection(id) {
+function showSection(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
-  const sec = document.getElementById('sec-'+id);
-  if (sec) sec.classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n=>{
-    if(n.getAttribute('onclick')===`showSection('${id}')`) n.classList.add('active');
-  });
-  const titles = {dashboard:'Dashboard',clockin:'Clock In / Out',dailylog:'Daily Work Log',tasks:'Task Board',incoming:'Incoming Work',clients:'Client Register',documents:'Document Checklist',feedback:'Client Feedback',events:'Events & Deadlines',notices:'Notices & Announcements',meetings:'Meeting Log',weekly:'Weekly Review',appraisal:'Performance & Appraisal',stride:'STRIDE Activity Tracker',admin:'System Administration'};
-  document.getElementById('page-title').textContent = titles[id]||id;
+  const sec=document.getElementById('sec-'+id);
+  if(sec)sec.classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n=>{if(n.getAttribute('onclick')===`showSection('${id}')`)n.classList.add('active');});
+  const titles={dashboard:'Dashboard',clockin:'Clock In / Out',dailylog:'Daily Work Log',tasks:'Task Board',incoming:'Incoming Work',clients:'Client Register',documents:'Document Checklist',feedback:'Client Feedback',events:'Events & Deadlines',notices:'Notices & Announcements',meetings:'Meeting Log',weekly:'Weekly Review',appraisal:'Performance & Appraisal',loginactivity:'Login Activity & Time Tracking',stride:'STRIDE Activity Tracker',admin:'System Administration'};
+  document.getElementById('page-title').textContent=titles[id]||id;
+  if(id==='loginactivity')document.getElementById('activity-date').value=today();
   loadSection(id);
 }
 
-// MODALS
-function openModal(id) {
-  document.getElementById(id).classList.add('open');
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove('open');
-}
-document.querySelectorAll('.modal-overlay').forEach(m=>{
-  m.addEventListener('click', e=>{ if(e.target===m) m.classList.remove('open'); });
-});
+function openModal(id){document.getElementById(id).classList.add('open');}
+function closeModal(id){document.getElementById(id).classList.remove('open');}
+document.querySelectorAll('.modal-overlay').forEach(m=>{m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');});});
 
-// INIT
 initLogin();
 </script>
 </body>
