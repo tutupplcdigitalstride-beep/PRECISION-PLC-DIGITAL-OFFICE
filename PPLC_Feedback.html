@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PPLC Client Feedback</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#F0F6FC;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px}
+.card{background:#fff;border-radius:16px;padding:40px;width:100%;max-width:480px;box-shadow:0 4px 24px rgba(11,31,58,.1)}
+.logo{text-align:center;margin-bottom:28px}
+.logo-mark{width:56px;height:56px;background:#0B1F3A;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px}
+.logo-mark span{color:#fff;font-size:24px;font-weight:700}
+h1{font-size:20px;font-weight:700;color:#0B1F3A;text-align:center}
+.sub{font-size:13px;color:#4A5E78;text-align:center;margin-top:4px;margin-bottom:24px}
+.form-group{margin-bottom:18px}
+label{display:block;font-size:12px;font-weight:600;color:#4A5E78;margin-bottom:6px}
+input,textarea,select{width:100%;padding:11px 13px;border:1px solid #D4E4F0;border-radius:8px;font-size:14px;font-family:'Inter',sans-serif;color:#0B1F3A;outline:none}
+input:focus,textarea:focus,select:focus{border-color:#1B6CA8}
+textarea{resize:vertical;min-height:100px}
+.stars{display:flex;gap:8px;justify-content:center;margin:12px 0}
+.star-btn{background:none;border:none;cursor:pointer;font-size:36px;color:#ddd;transition:color .1s;padding:4px}
+.star-btn.active{color:#C4972A}
+.star-label{text-align:center;font-size:13px;color:#4A5E78;margin-bottom:16px}
+.submit-btn{width:100%;padding:14px;background:#0B1F3A;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;margin-top:8px}
+.submit-btn:hover{background:#1B6CA8}
+.success{text-align:center;padding:20px 0;display:none}
+.success-icon{font-size:48px;margin-bottom:12px}
+.success-title{font-size:18px;font-weight:700;color:#1A7A4A;margin-bottom:8px}
+.success-sub{font-size:13px;color:#4A5E78}
+.footer{text-align:center;margin-top:20px;font-size:11px;color:#7A8FA8}
+.err{background:#FDEAEA;color:#B02020;padding:10px 14px;border-radius:8px;font-size:13px;margin-bottom:14px;display:none}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="logo">
+    <div class="logo-mark"><span>P</span></div>
+    <h1>How did we do?</h1>
+    <p class="sub">Precision Price Lead Consult values your feedback. It takes less than a minute.</p>
+  </div>
+
+  <div id="err" class="err"></div>
+
+  <div id="form-section">
+    <div class="form-group">
+      <label>Your Name or Organisation</label>
+      <input type="text" id="client-name" placeholder="e.g. John Doe or ABC Limited">
+    </div>
+
+    <div class="form-group">
+      <label>Job or Service Reference (optional)</label>
+      <input type="text" id="job-ref" placeholder="e.g. Financial Statement 2025">
+    </div>
+
+    <div class="form-group">
+      <label style="text-align:center;display:block">How would you rate our service?</label>
+      <div class="stars">
+        <button class="star-btn" data-val="1" onclick="setRating(1)">&#9733;</button>
+        <button class="star-btn" data-val="2" onclick="setRating(2)">&#9733;</button>
+        <button class="star-btn" data-val="3" onclick="setRating(3)">&#9733;</button>
+        <button class="star-btn" data-val="4" onclick="setRating(4)">&#9733;</button>
+        <button class="star-btn" data-val="5" onclick="setRating(5)">&#9733;</button>
+      </div>
+      <div class="star-label" id="star-label">Click to rate</div>
+    </div>
+
+    <div class="form-group">
+      <label>Your Feedback</label>
+      <textarea id="feedback-text" placeholder="Tell us about your experience with our service..."></textarea>
+    </div>
+
+    <button class="submit-btn" onclick="submitFeedback()">Submit Feedback</button>
+  </div>
+
+  <div class="success" id="success-section">
+    <div class="success-icon">&#10003;</div>
+    <div class="success-title">Thank you for your feedback!</div>
+    <p class="success-sub">Your response has been received. We appreciate you taking the time to share your experience with Precision Price Lead Consult.</p>
+  </div>
+
+  <div class="footer">Precision Price Lead Consult &middot; Confidential Feedback</div>
+</div>
+
+<script>
+var SB_URL = 'https://rpuzudltvagmaofycanx.supabase.co';
+var SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJwdXp1ZGx0dmFnbWFvZnljYW54Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk0OTUwNTMsImV4cCI6MjEwNTA3MTA1M30.yC4cJiUbiXbfAUcvcveamDjmOt1uuuSds04poXsUX70';
+var selectedRating = 0;
+var starLabels = ['', 'Poor', 'Needs Improvement', 'Satisfactory', 'Very Good', 'Excellent'];
+
+function setRating(val) {
+  selectedRating = val;
+  document.querySelectorAll('.star-btn').forEach(function(btn) {
+    btn.classList.toggle('active', parseInt(btn.getAttribute('data-val')) <= val);
+  });
+  document.getElementById('star-label').textContent = starLabels[val];
+}
+
+function submitFeedback() {
+  var clientName = document.getElementById('client-name').value.trim();
+  var jobRef = document.getElementById('job-ref').value.trim();
+  var feedbackText = document.getElementById('feedback-text').value.trim();
+  var err = document.getElementById('err');
+  err.style.display = 'none';
+
+  if (!clientName) { err.style.display = 'block'; err.textContent = 'Please enter your name or organisation.'; return; }
+  if (!selectedRating) { err.style.display = 'block'; err.textContent = 'Please select a star rating.'; return; }
+  if (!feedbackText) { err.style.display = 'block'; err.textContent = 'Please share your feedback before submitting.'; return; }
+
+  var today = new Date().toISOString().split('T')[0];
+  var data = { client_name: clientName, rating: selectedRating, feedback_text: feedbackText, received_date: today, submitted_via_link: true, include_in_external: false };
+  if (jobRef) data.job_reference = jobRef;
+
+  fetch(SB_URL + '/rest/v1/client_feedback', {
+    method: 'POST',
+    headers: { 'apikey': SB_KEY, 'Authorization': 'Bearer ' + SB_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).then(function(r) {
+    if (r.ok || r.status === 201) {
+      document.getElementById('form-section').style.display = 'none';
+      document.getElementById('success-section').style.display = 'block';
+    } else {
+      err.style.display = 'block';
+      err.textContent = 'Something went wrong. Please try again.';
+    }
+  }).catch(function() {
+    err.style.display = 'block';
+    err.textContent = 'Could not connect. Please check your internet and try again.';
+  });
+}
+</script>
+</body>
+</html>
