@@ -694,11 +694,11 @@ async function dbPatch(t,filter,d){return db(t,{method:'PATCH',filter,body:d});}
 function toast(msg,type='success'){const t=document.getElementById('toast');t.textContent=msg;t.className=`toast show ${type}`;setTimeout(()=>t.className='toast',3000);}
 function av(n){return(n||'').split(' ').slice(0,2).map(w=>w[0]||'').join('').toUpperCase();}
 function today(){return new Date().toISOString().split('T')[0];}
-function fmtDate(d){if(!d)return'—';return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
-function fmtTime(ts){if(!ts)return'—';return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
+function fmtDate(d){if(!d)return'--';return new Date(d).toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});}
+function fmtTime(ts){if(!ts)return'--';return new Date(ts).toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});}
 function badge(text,type){return`<span class="badge ${type}">${text}</span>`;}
-function priorityBadge(p){if(!p)return badge('—','grey');if(p==='URGENT')return badge('URGENT','red');if(p==='High')return badge('High','amber');if(p==='Medium')return badge('Medium','blue');return badge('Low','grey');}
-function statusBadge(s){if(!s)return badge('—','grey');if(['Completed','Complete','Active'].includes(s))return badge(s,'green');if(['Overdue'].includes(s))return badge(s,'red');if(['Blocked'].includes(s))return badge(s,'red');if(['In Progress','Assigned','Scheduled'].includes(s))return badge(s,'blue');return badge(s,'grey');}
+function priorityBadge(p){if(!p)return badge('--','grey');if(p==='URGENT')return badge('URGENT','red');if(p==='High')return badge('High','amber');if(p==='Medium')return badge('Medium','blue');return badge('Low','grey');}
+function statusBadge(s){if(!s)return badge('--','grey');if(['Completed','Complete','Active'].includes(s))return badge(s,'green');if(['Overdue'].includes(s))return badge(s,'red');if(['Blocked'].includes(s))return badge(s,'red');if(['In Progress','Assigned','Scheduled'].includes(s))return badge(s,'blue');return badge(s,'grey');}
 function isManagement(){return currentUser&&['management','admin'].includes(currentUser.access_level);}
 function canCreateTasks(){return isManagement()||TASK_CREATORS.some(n=>currentUser?.full_name?.includes(n.split(' ')[0]));}
 function getQuarterDates(q,y){const ranges={Q1:[`${y}-01-01`,`${y}-03-31`],Q2:[`${y}-04-01`,`${y}-06-30`],Q3:[`${y}-07-01`,`${y}-09-30`],Q4:[`${y}-10-01`,`${y}-12-31`]};return ranges[q]||ranges.Q3;}
@@ -829,7 +829,7 @@ async function loadDashboard(){
     let sb=badge('Not In','red');
     if(clocked&&logged)sb=badge('Active','green');
     else if(clocked&&!logged)sb=badge('Pending Log','amber');
-    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td>${clockRec?fmtTime(clockRec.clock_in):'—'}</td><td>${logged?badge('Submitted','green'):badge('Not Yet','amber')}</td><td>${sb}</td></tr>`;
+    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'--'}</td><td>${clockRec?fmtTime(clockRec.clock_in):'--'}</td><td>${logged?badge('Submitted','green'):badge('Not Yet','amber')}</td><td>${sb}</td></tr>`;
   }).join('');
   document.getElementById('dash-staff-table').innerHTML=staffRows?`<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Clock In</th><th>Log</th><th>Status</th></tr></thead><tbody>${staffRows}</tbody></table>`:'<div class="empty-state"><div class="empty-text">No activity recorded today</div></div>';
 
@@ -837,13 +837,13 @@ async function loadDashboard(){
   const evHtml=upcomingEvts.slice(0,4).map(e=>{
     const dt=new Date(e.event_date);const daysAway=Math.ceil((dt-new Date())/86400000);
     const pill=daysAway<=0?badge('Today','red'):daysAway<=1?badge('Tomorrow','red'):daysAway<=3?badge(`${daysAway} Days`,'amber'):badge(`${daysAway} Days`,'blue');
-    return`<div class="event-item"><div class="event-date-box"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}</div></div>${pill}</div>`;
+    return`<div class="event-item"><div class="event-date-box"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'--'} · ${e.client_name||'Internal'}</div></div>${pill}</div>`;
   }).join('');
   document.getElementById('dash-events').innerHTML=evHtml||'<div class="empty-state" style="padding:30px"><div class="empty-text">No upcoming events</div></div>';
 
   // Overdue tasks
   const myOverdue=isManagement()?overdue:overdue.filter(t=>t.assigned_to_name===currentUser.full_name);
-  const ovHtml=myOverdue.slice(0,5).map(t=>`<tr class="alert-row"><td><strong>${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}</td><td>${badge('Overdue','red')}</td></tr>`).join('');
+  const ovHtml=myOverdue.slice(0,5).map(t=>`<tr class="alert-row"><td><strong>${t.title}</strong></td><td>${t.client_name||'--'}</td><td>${t.assigned_to_name||'--'}</td><td>${fmtDate(t.due_date)}</td><td>${badge('Overdue','red')}</td></tr>`).join('');
   document.getElementById('dash-overdue').innerHTML=ovHtml?`<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due</th><th>Status</th></tr></thead><tbody>${ovHtml}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No overdue tasks</div></div>';
 }
 
@@ -856,13 +856,13 @@ async function loadSection(id){
 async function loadClockIn(){
   const todayStr=today();
   const clocks=await db('clock_records',{filter:`work_date=eq.${todayStr}`});
-  document.getElementById('clock-date-label').textContent=`Today — ${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
+  document.getElementById('clock-date-label').textContent=`Today -- ${new Date().toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'})}`;
   const activeStaff=cache.staff.filter(s=>s.access_level==='staff');
   const clockedNames=[...new Set(clocks.map(c=>c.staff_name))];
   const html=activeStaff.map(s=>{
     const rec=clocks.filter(c=>c.staff_name===s.full_name).slice(-1)[0];
     const clockedOut=rec&&rec.logout_time;
-    return`<div class="clock-card"><div class="clock-name">${s.full_name}</div><div class="clock-time">${rec?'In: '+fmtTime(rec.clock_in)+(clockedOut?' | Out: '+fmtTime(rec.logout_time):''):'—'}</div><div class="clock-status">${rec&&!clockedOut?badge('Working','green'):rec&&clockedOut?badge('Clocked Out','grey'):badge('Not In','red')}</div></div>`;
+    return`<div class="clock-card"><div class="clock-name">${s.full_name}</div><div class="clock-time">${rec?'In: '+fmtTime(rec.clock_in)+(clockedOut?' | Out: '+fmtTime(rec.logout_time):''):'--'}</div><div class="clock-status">${rec&&!clockedOut?badge('Working','green'):rec&&clockedOut?badge('Clocked Out','grey'):badge('Not In','red')}</div></div>`;
   }).join('');
   document.getElementById('clock-grid').innerHTML=html||'<div class="empty-state"><div class="empty-text">No staff data</div></div>';
 }
@@ -871,7 +871,7 @@ async function loadDailyLog(){
   const todayStr=today();
   const filter=isManagement()?`log_date=eq.${todayStr}`:`log_date=eq.${todayStr}&staff_name=eq.${encodeURIComponent(currentUser.full_name)}`;
   const logs=await db('daily_logs',{filter,order:'created_at.desc'});
-  const rows=logs.map(l=>`<tr><td><strong>${l.staff_name}</strong></td><td>${l.client_name||'—'}</td><td>${l.task_type||'—'}</td><td style="max-width:200px">${l.task_description||'—'}</td><td>${priorityBadge(l.priority)}</td><td>${statusBadge(l.task_status)}</td><td>${l.next_step||'—'}</td></tr>`).join('');
+  const rows=logs.map(l=>`<tr><td><strong>${l.staff_name}</strong></td><td>${l.client_name||'--'}</td><td>${l.task_type||'--'}</td><td style="max-width:200px">${l.task_description||'--'}</td><td>${priorityBadge(l.priority)}</td><td>${statusBadge(l.task_status)}</td><td>${l.next_step||'--'}</td></tr>`).join('');
   document.getElementById('daily-log-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Staff</th><th>Client</th><th>Task Type</th><th>What Was Done</th><th>Priority</th><th>Status</th><th>Next Step</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📝</div><div class="empty-text">No entries yet today</div><div class="empty-sub">Click Add Log Entry to submit your work</div></div>';
 }
 
@@ -886,7 +886,7 @@ async function loadTasks(){
     const isDueSoon=daysAway!==null&&daysAway>=0&&daysAway<=3;
     const rowClass=isOverdue?'alert-row':isDueSoon?'warn-row':'';
     const alertFlag=isOverdue?'⚠ ':isDueSoon?'⏰ ':'';
-    return`<tr class="${rowClass}"><td><strong>${alertFlag}${t.title}</strong></td><td>${t.client_name||'—'}</td><td>${t.assigned_to_name||'—'}</td><td>${fmtDate(t.due_date)}${isOverdue?' <span style="color:var(--red);font-size:11px;font-weight:700">OVERDUE</span>':isDueSoon?` <span style="color:var(--amber);font-size:11px;font-weight:700">DUE SOON</span>':''}</td><td>${priorityBadge(t.priority)}</td><td><select class="inline-select" onchange="updateTaskStatus('${t.id}',this.value)">${statusOpts.replace(`value="${t.status}"`,`value="${t.status}" selected`)}</select></td></tr>`;
+    return`<tr class="${rowClass}"><td><strong>${alertFlag}${t.title}</strong></td><td>${t.client_name||'--'}</td><td>${t.assigned_to_name||'--'}</td><td>${fmtDate(t.due_date)}${isOverdue?' <span style="color:var(--red);font-size:11px;font-weight:700">OVERDUE</span>':isDueSoon?` <span style="color:var(--amber);font-size:11px;font-weight:700">DUE SOON</span>':''}</td><td>${priorityBadge(t.priority)}</td><td><select class="inline-select" onchange="updateTaskStatus('${t.id}',this.value)">${statusOpts.replace(`value="${t.status}"`,`value="${t.status}" selected`)}</select></td></tr>`;
   }).join('');
   document.getElementById('task-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Task</th><th>Client</th><th>Assigned To</th><th>Due Date</th><th>Priority</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">✅</div><div class="empty-text">No active tasks</div></div>';
 }
@@ -900,19 +900,19 @@ async function updateTaskStatus(id,newStatus){
 
 async function loadIncoming(){
   const incoming=await db('incoming_work',{order:'created_at.desc'});
-  const rows=incoming.map(i=>`<tr><td>${fmtDate(i.date_received)}</td><td>${i.client_name||'—'}</td><td>${i.brief}</td><td>${i.assigned_to_name||'—'}</td><td>${statusBadge(i.status)}</td></tr>`).join('');
+  const rows=incoming.map(i=>`<tr><td>${fmtDate(i.date_received)}</td><td>${i.client_name||'--'}</td><td>${i.brief}</td><td>${i.assigned_to_name||'--'}</td><td>${statusBadge(i.status)}</td></tr>`).join('');
   document.getElementById('incoming-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Date</th><th>Client</th><th>Brief</th><th>Assigned To</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📥</div><div class="empty-text">No incoming work logged yet</div></div>';
 }
 
 async function loadClients(){
   const clients=await db('clients',{filter:'is_active=eq.true',order:'name.asc'});
-  const rows=clients.map(c=>`<tr><td><strong>${c.name}</strong></td><td>${c.industry||'—'}</td><td>${c.notes||'—'}</td><td>${badge('Active','green')}</td></tr>`).join('');
+  const rows=clients.map(c=>`<tr><td><strong>${c.name}</strong></td><td>${c.industry||'--'}</td><td>${c.notes||'--'}</td><td>${badge('Active','green')}</td></tr>`).join('');
   document.getElementById('client-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client Name</th><th>Industry</th><th>Notes</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-text">No clients loaded</div></div>';
 }
 
 async function loadDocuments(){
   const docs=await db('document_checklist',{order:'created_at.desc'});
-  const rows=docs.map(d=>`<tr><td>${d.client_name||'—'}</td><td>${d.document_name}</td><td>${fmtDate(d.expected_by)}</td><td>${d.received?badge('Received','green'):badge('Outstanding','red')}</td><td>${d.notes||'—'}</td></tr>`).join('');
+  const rows=docs.map(d=>`<tr><td>${d.client_name||'--'}</td><td>${d.document_name}</td><td>${fmtDate(d.expected_by)}</td><td>${d.received?badge('Received','green'):badge('Outstanding','red')}</td><td>${d.notes||'--'}</td></tr>`).join('');
   document.getElementById('document-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client</th><th>Document</th><th>Expected By</th><th>Status</th><th>Notes</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">📁</div><div class="empty-text">No documents tracked yet</div></div>';
 }
 
@@ -922,7 +922,7 @@ async function loadEvents(){
   const html=events.map(e=>{
     const dt=new Date(e.event_date);const daysAway=Math.ceil((dt-new Date())/86400000);
     const pill=daysAway<0?badge('Past','grey'):daysAway===0?badge('Today','red'):daysAway<=1?badge('Tomorrow','red'):daysAway<=3?badge(`${daysAway} Days`,'amber'):badge(`${daysAway} Days`,'blue');
-    return`<div class="event-item"><div class="event-date-box" style="${daysAway<0?'background:var(--slate)':''}"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'—'} · ${e.client_name||'Internal'}${e.event_time?' · '+e.event_time:''}</div><div class="notice-meta">Reminder: ${e.reminder_schedule}</div></div>${pill}</div>`;
+    return`<div class="event-item"><div class="event-date-box" style="${daysAway<0?'background:var(--slate)':''}"><div class="event-day">${dt.getDate()}</div><div class="event-month">${dt.toLocaleDateString('en-GB',{month:'short'})}</div></div><div class="event-info"><div class="event-title">${e.title}</div><div class="event-detail">${e.assigned_to_name||'--'} · ${e.client_name||'Internal'}${e.event_time?' · '+e.event_time:''}</div><div class="notice-meta">Reminder: ${e.reminder_schedule}</div></div>${pill}</div>`;
   }).join('');
   document.getElementById('events-list').innerHTML=html||'<div class="empty-state" style="padding:40px"><div class="empty-icon">📅</div><div class="empty-text">No events logged yet</div></div>';
 }
@@ -936,7 +936,7 @@ async function loadNotices(){
 
 async function loadMeetings(){
   const meetings=await db('meetings',{order:'meeting_date.desc'});
-  const rows=meetings.map(m=>`<tr><td>${fmtDate(m.meeting_date)}</td><td>${m.meeting_type||'—'}</td><td>${m.attendees||'—'}</td><td>${m.key_outcome||'—'}</td><td>${m.action_points||'—'}</td></tr>`).join('');
+  const rows=meetings.map(m=>`<tr><td>${fmtDate(m.meeting_date)}</td><td>${m.meeting_type||'--'}</td><td>${m.attendees||'--'}</td><td>${m.key_outcome||'--'}</td><td>${m.action_points||'--'}</td></tr>`).join('');
   document.getElementById('meeting-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Date</th><th>Type</th><th>Attendees</th><th>Outcome</th><th>Actions</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">🤝</div><div class="empty-text">No meetings logged yet</div></div>';
 }
 
@@ -954,7 +954,7 @@ async function loadWeekly(){
     if(days>=4)r=badge('Strong Week','green');
     else if(days>=3)r=badge('Satisfactory','blue');
     else if(days>=1)r=badge('Needs Attention','amber');
-    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'—'}</td><td style="text-align:center">${days}</td><td style="text-align:center">${completed}</td><td style="text-align:center">${inProgress}</td><td style="text-align:center">${urgent}</td><td>${r}</td></tr>`;
+    return`<tr><td><strong>${s.full_name}</strong></td><td>${s.department||'--'}</td><td style="text-align:center">${days}</td><td style="text-align:center">${completed}</td><td style="text-align:center">${inProgress}</td><td style="text-align:center">${urgent}</td><td>${r}</td></tr>`;
   }).join('');
   document.getElementById('weekly-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Staff</th><th>Department</th><th>Days Logged</th><th>Completed</th><th>In Progress</th><th>URGENT Items</th><th>Rating</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state"><div class="empty-text">No log data this week</div></div>';
 }
@@ -1009,7 +1009,7 @@ async function loadAppraisal(){
       </div>
       <div class="perf-bar-wrap"><div class="perf-name">Activity</div><div class="perf-bar-bg"><div class="perf-bar" style="width:${activityPct}%;background:${barColor}"></div></div><div class="perf-val">${activityPct}%</div></div>
       <div style="margin-top:12px">
-        <label class="form-label">Coordinator Notes — ${q} ${y}</label>
+        <label class="form-label">Coordinator Notes -- ${q} ${y}</label>
         <textarea class="form-textarea" id="note-${s.full_name.replace(/\s/g,'_')}" style="min-height:70px" placeholder="Add your appraisal notes for ${s.full_name.split(' ')[0]} here...">${existingNote?.coordinator_notes||''}</textarea>
         <div style="display:flex;gap:8px;margin-top:8px;align-items:center">
           <select class="inline-select" id="rating-${s.full_name.replace(/\s/g,'_')}" style="font-size:13px;padding:6px 10px">
@@ -1040,7 +1040,7 @@ async function loadLoginActivity(){
   const dateFilter=document.getElementById('activity-date')?.value||today();
   const activity=await db('login_activity',{filter:`session_date=eq.${dateFilter}`,order:'login_time.desc'});
   const rows=activity.map(a=>{
-    const dur=a.duration_minutes?`${a.duration_minutes} min`:a.logout_time?'—':'Active';
+    const dur=a.duration_minutes?`${a.duration_minutes} min`:a.logout_time?'--':'Active';
     const ltype=a.logout_type==='auto'?badge('Auto-logout','amber'):a.logout_type==='manual'?badge('Manual','grey'):badge('Active','green');
     return`<tr><td><strong>${a.staff_name}</strong></td><td>${fmtTime(a.login_time)}</td><td>${a.logout_time?fmtTime(a.logout_time):'Still logged in'}</td><td>${dur}</td><td>${ltype}</td></tr>`;
   }).join('');
@@ -1064,18 +1064,22 @@ async function loadLoginActivity(){
 
 async function loadStride(){
   const activities=await db('stride_activity',{order:'created_at.desc'});
-  const rows=activities.map(a=>`<tr><td><strong>${a.client_name||'—'}</strong></td><td>${a.stride_stage||'—'}</td><td>${a.assigned_to_name||'—'}</td><td>${fmtDate(a.activity_date)}</td><td>${a.outcome||'—'}</td><td>${statusBadge(a.status)}</td></tr>`).join('');
+  const rows=activities.map(a=>`<tr><td><strong>${a.client_name||'--'}</strong></td><td>${a.stride_stage||'--'}</td><td>${a.assigned_to_name||'--'}</td><td>${fmtDate(a.activity_date)}</td><td>${a.outcome||'--'}</td><td>${statusBadge(a.status)}</td></tr>`).join('');
   document.getElementById('stride-table').innerHTML=rows?`<table class="data-table"><thead><tr><th>Client</th><th>Stage</th><th>Assigned To</th><th>Date</th><th>Outcome</th><th>Status</th></tr></thead><tbody>${rows}</tbody></table>`:'<div class="empty-state" style="padding:30px"><div class="empty-icon">🔷</div><div class="empty-text">No STRIDE activity yet</div></div>';
 }
 
 async function loadFeedback(){
   const fb=await db('client_feedback',{order:'created_at.desc'});
-  const html=fb.map(f=>{const stars=Array.from({length:5},(_,i)=>`<span class="star${i>=f.rating?' empty':''}"">★</span>`).join('');return`<div class="feedback-item"><div class="feedback-score">${stars}</div><div style="font-size:13px;color:var(--navy)">${f.feedback_text||'No comment'}</div><div class="notice-meta">${f.client_name||'Anonymous'} · ${fmtDate(f.received_date)}</div></div>`;}).join('');
+  const html=fb.map(f=>{
+    let stars='';
+    for(let i=0;i<5;i++){stars+=i<f.rating?'<span class="star">★</span>':'<span class="star empty">★</span>';}
+    return '<div class="feedback-item"><div class="feedback-score">'+stars+'</div><div style="font-size:13px;color:var(--navy)">'+(f.feedback_text||'No comment')+'</div><div class="notice-meta">'+(f.client_name||'Anonymous')+'  ·  '+fmtDate(f.received_date)+'</div></div>';
+  }).join('');
   document.getElementById('feedback-list').innerHTML=html||'<div class="empty-state" style="padding:40px"><div class="empty-icon">💬</div><div class="empty-text">No feedback yet</div></div>';
 }
 
 async function loadAdmin(){
-  const staffList=cache.staff.map(s=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;font-weight:500">${s.full_name}</div><div style="font-size:11.5px;color:var(--slate)">${s.department||'—'} · ${s.role||'—'}</div></div><div style="display:flex;gap:8px;align-items:center">${badge(s.access_level,'navy')}<div style="font-size:11px;color:var(--slate-light)">${s.is_active?'Active':'Inactive'}</div></div></div>`).join('');
+  const staffList=cache.staff.map(s=>`<div style="display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--border)"><div><div style="font-size:13px;font-weight:500">${s.full_name}</div><div style="font-size:11.5px;color:var(--slate)">${s.department||'--'} · ${s.role||'--'}</div></div><div style="display:flex;gap:8px;align-items:center">${badge(s.access_level,'navy')}<div style="font-size:11px;color:var(--slate-light)">${s.is_active?'Active':'Inactive'}</div></div></div>`).join('');
   document.getElementById('admin-staff-list').innerHTML=staffList;
 }
 
